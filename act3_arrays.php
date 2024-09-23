@@ -13,22 +13,24 @@
 // $user[1]="hi ";
 // $user[2]="hello ";
 // $user[3]="there ";
+// print($user[1].$user[2].$user[3]);
 
+// EXERCISE 25
 // $user[100]="hi ";
 // $user[200]="hello ";
 // $user[300]="there ";
 
-// print($user[1].$user[2].$user[3]);
+// 
 // print($user[100].$user[200].$user[300]);
 
-// EXERCISE 25
+// EXERCISE 26
 // $user = array("hi ","hello ","there ");
 
 // $user[]="jhon ";
 
 // print($user[3]);
 
-// EXERCISE 26
+// EXERCISE 27
 // $user = array("hi ","hello ","there ");
 // $user[]="jhon ";
 
@@ -39,19 +41,11 @@
 
 // print($first.$second.$third.$fourth);
 
-// EXERCISE 27
+// EXERCISE 28
 // $var = array(1,2,3,4);
 // foreach ($var as $val) {
 //     print("container");
 // }
-
-// EXERCISE 28
-// $one_piece = array(
-//     "name" => "Luffy",
-//     "power" => "rubber",
-//     "profession" => "pirate"
-// );
-// print($one_piece["name"]);
 
 // EXERCISE 29
 // $one_piece = array(
@@ -59,9 +53,17 @@
 //     "power" => "rubber",
 //     "profession" => "pirate"
 // );
-// print($one_piece["name"]="Jhon");
+// print($one_piece["name"]);
 
 // EXERCISE 30
+// $one_piece = array(
+//     "name" => "Luffy",
+//     "power" => "rubber",
+//     "profession" => "pirate"
+// );
+// print($one_piece["name"]="Jhon");
+
+// EXERCISE 31
 // $user = array(
 //     "name" => "Luffy",
 //     "power" => "rubber",
@@ -73,25 +75,25 @@
 //     print("\n");
 // }
 
-// EXERCISE 31
+// // EXERCISE 32
 // $one_piece = array(
-//     array(
+//     "x" => array(
 //         "name" => "Luffy",
 //         "power" => "rubber",
 //         "profession" => "pirate"
 //     ),
-//     array(
+//     "y" => array(
 //         "name" => "Zoro",
 //         "power" => "swordsman",
 //         "profession" => "pirate"
 //     ),
-//     array(
+//     "z" => array(
 //         "name" => "Nami",
 //         "power" => "navigator",
 //         "profession" => "pirate"
 //     )
 // );
 
-// $one_piece[0]["name"] = "John";
-
-// print($one_piece[0]["name"]);
+// $one_piece["x"]["name"] = "John";
+  
+// print($one_piece["x"]["name"]. $one_piece["y"]["name"]);
