@@ -54,7 +54,7 @@
             <h2>Basic PHP</h2>
             <ul>
                 <?php
-                for ($i = 1; $i <= 10; $i++) {
+                for ($i = 1; $i <= 12; $i++) {
                     echo "<li><a href='basicphp/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
@@ -64,7 +64,7 @@
             <h2>Program Flow</h2>
             <ul>
                 <?php
-                for ($i = 1; $i <= 10; $i++) {
+                for ($i = 13; $i <= 22; $i++) {
                     echo "<li><a href='programflow/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
@@ -74,7 +74,7 @@
             <h2>Arrays</h2>
             <ul>
                 <?php
-                for ($i = 1; $i <= 10; $i++) {
+                for ($i = 23; $i <= 32; $i++) {
                     echo "<li><a href='arrays/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>

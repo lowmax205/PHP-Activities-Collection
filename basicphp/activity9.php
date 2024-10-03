@@ -1,0 +1,4 @@
+<?php
+// EXERCISE 9
+$user = "NILO JR. OLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANG";
+print("hello, $user");
