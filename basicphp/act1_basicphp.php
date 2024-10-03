@@ -52,7 +52,8 @@
 // EXERCISE 11
 // $feet = 20;
 // print("The width is " . ($feet*12). " inches");
-?>
+
+/*?>
 
 <!-- EXERCISE 12  -->
 <!DOCTYPE html>
@@ -76,4 +77,4 @@ print("<br/>$temp");
 ?>
 </body>
 
-</html>
+</html>*/
