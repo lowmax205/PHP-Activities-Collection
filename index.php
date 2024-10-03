@@ -15,13 +15,13 @@
     .container {
         display: flex;
         justify-content: space-around;
-        padding: 20px;
+        padding: 10px;
     }
 
     .column {
         border: 2px solid black;
-        padding: 10px;
-        width: 30%;
+        padding: 20px;
+        width: 13%;
     }
 
     .column h2 {
@@ -74,8 +74,38 @@
             <h2>Arrays</h2>
             <ul>
                 <?php
-                for ($i = 23; $i <= 32; $i++) {
+                for ($i = 23; $i <= 33; $i++) {
                     echo "<li><a href='arrays/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Functions</h2>
+            <ul>
+                <?php
+                for ($i = 33; $i <= 43; $i++) {
+                    echo "<li><a href='functions/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Forms</h2>
+            <ul>
+                <?php
+                for ($i = 43; $i <= 53; $i++) {
+                    echo "<li><a href='forms/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>String Manipulation</h2>
+            <ul>
+                <?php
+                for ($i = 53; $i <=77 ; $i++) {
+                    echo "<li><a href='string_manipulation/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
             </ul>
