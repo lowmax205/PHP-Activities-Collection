@@ -1,5 +1,4 @@
 <?php
-// Manually define the folder names and order
 $folders = [
     '1_basicphp',
     '2_programflow',
@@ -72,34 +71,66 @@ $parent_dir = "D:/xampp/htdocs/CS311-Php-Activity/";
 
 <body>
     <div class="container">
-        <?php
-        // Loop through each folder in the manually defined order
-        foreach ($folders as $folder_name) {
-            $folder_path = $parent_dir . $folder_name;
-
-            echo "<div class='column'>";
-            echo "<h2>" . ucfirst(str_replace('_', ' ', $folder_name)) . "</h2>";  // Capitalize and format folder name
-            echo "<ul>";
-
-            // Scan the folder for files matching the pattern 'activity*.php'
-            $activity_files = glob($folder_path . '/activity*.php');
-
-            // Sort files using natural sorting to ensure numeric order
-            natsort($activity_files);
-
-            // Loop through and display each activity
-            foreach ($activity_files as $activity_file) {
-                // Get the activity number from the file name
-                preg_match('/activity(\d+)\.php$/', basename($activity_file), $matches);
-                if (isset($matches[1])) {
-                    $activity_number = $matches[1];
-                    echo "<li><a href='" . $folder_name . "/activity$activity_number.php'>Activity #$activity_number</a></li>";
+        <div class="column">
+            <h2>Basic PHP</h2>
+            <ul>
+                <?php
+                for ($i = 1; $i <= 12; $i++) {
+                    echo "<li><a href='1_basicphp/activity$i.php'>Activity #$i</a></li>";
                 }
-            }
-            echo "</ul>";
-            echo "</div>";
-        }
-        ?>
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Program Flow</h2>
+            <ul>
+                <?php
+                for ($i = 13; $i <= 22; $i++) {
+                    echo "<li><a href='programflow/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Arrays</h2>
+            <ul>
+                <?php
+                for ($i = 23; $i <= 33; $i++) {
+                    echo "<li><a href='arrays/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Functions</h2>
+            <ul>
+                <?php
+                for ($i = 34; $i <= 44; $i++) {
+                    echo "<li><a href='functions/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Forms</h2>
+            <ul>
+                <?php
+                for ($i = 45; $i <= 53; $i++) {
+                    echo "<li><a href='forms/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>String Manipulation</h2>
+            <ul>
+                <?php
+                for ($i = 53; $i <=77 ; $i++) {
+                    echo "<li><a href='string_manipulation/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
     </div>
 </body>
 
