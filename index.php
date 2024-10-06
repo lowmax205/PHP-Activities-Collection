@@ -1,22 +1,3 @@
-<?php
-$folders = [
-    '1_basicphp',
-    '2_programflow',
-    '3_arrays',
-    '4_functions',
-    '5_forms',
-    '6_string_manipulation',
-    '7_objects',
-    '8_files',
-    '9_database',
-    '10_cookies_sessions',
-    '11_mvc_model'
-];
-
-$parent_dir = "D:/xampp/htdocs/CS311-Php-Activity/";
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
