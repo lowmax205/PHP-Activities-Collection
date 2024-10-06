@@ -1,3 +1,14 @@
+<?php
+// Set the current working directory
+$basicphp = getcwd() . "/1_basicphp/";
+
+// Returns array of files, excluding '.' and '..'
+$files = array_diff(scandir($basicphp), array('.', '..'));
+
+// Count number of files and store them to variable
+$num_files = count($files);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,8 +65,8 @@
             <h2>Basic PHP</h2>
             <ul>
                 <?php
-                for ($i = 1; $i <= 12; $i++) {
-                    echo "<li><a href='basicphp/activity$i.php'>Activity #$i</a></li>";
+                for ($i = 1; $i <= $num_files; $i++) {
+                    echo "<li><a href='1_basicphp/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
             </ul>
