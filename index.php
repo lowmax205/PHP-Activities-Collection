@@ -86,7 +86,7 @@ $parent_dir = "D:/xampp/htdocs/CS311-Php-Activity/";
             <ul>
                 <?php
                 for ($i = 13; $i <= 22; $i++) {
-                    echo "<li><a href='programflow/activity$i.php'>Activity #$i</a></li>";
+                    echo "<li><a href='2_programflow/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
             </ul>
@@ -96,7 +96,7 @@ $parent_dir = "D:/xampp/htdocs/CS311-Php-Activity/";
             <ul>
                 <?php
                 for ($i = 23; $i <= 33; $i++) {
-                    echo "<li><a href='arrays/activity$i.php'>Activity #$i</a></li>";
+                    echo "<li><a href='3_arrays/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
             </ul>
@@ -106,7 +106,7 @@ $parent_dir = "D:/xampp/htdocs/CS311-Php-Activity/";
             <ul>
                 <?php
                 for ($i = 34; $i <= 44; $i++) {
-                    echo "<li><a href='functions/activity$i.php'>Activity #$i</a></li>";
+                    echo "<li><a href='4_functions/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
             </ul>
@@ -116,7 +116,7 @@ $parent_dir = "D:/xampp/htdocs/CS311-Php-Activity/";
             <ul>
                 <?php
                 for ($i = 45; $i <= 53; $i++) {
-                    echo "<li><a href='forms/activity$i.php'>Activity #$i</a></li>";
+                    echo "<li><a href='5_forms/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
             </ul>
@@ -125,8 +125,58 @@ $parent_dir = "D:/xampp/htdocs/CS311-Php-Activity/";
             <h2>String Manipulation</h2>
             <ul>
                 <?php
-                for ($i = 53; $i <=77 ; $i++) {
-                    echo "<li><a href='string_manipulation/activity$i.php'>Activity #$i</a></li>";
+                for ($i = 54; $i <=70 ; $i++) {
+                    echo "<li><a href='6_string_manipulation/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Objects</h2>
+            <ul>
+                <?php
+                for ($i = 71; $i <=82 ; $i++) {
+                    echo "<li><a href='7_objects/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Files</h2>
+            <ul>
+                <?php
+                for ($i = 82; $i <=90 ; $i++) {
+                    echo "<li><a href='8_files/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Database</h2>
+            <ul>
+                <?php
+                for ($i = 91; $i <=100 ; $i++) {
+                    echo "<li><a href='9_database/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Cookies Session</h2>
+            <ul>
+                <?php
+                for ($i = 101; $i <=110 ; $i++) {
+                    echo "<li><a href='10_cookies_sessions/activity$i.php'>Activity #$i</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>MVC model</h2>
+            <ul>
+                <?php
+                for ($i = 111; $i <=120 ; $i++) {
+                    echo "<li><a href='11_mvc_model/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
             </ul>
