@@ -1,3 +1,4 @@
 <?php
-echo (strlen ("Christopher"));
+echo (chr(34));
+echo ("\""); 
 ?>

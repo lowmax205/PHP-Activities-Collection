@@ -1,9 +1,6 @@
 <?php
-echo trim(" sample string ");  // Output: 'sample string'
+$string = "Site contents copyright 2003."; 
+$string .= "The 2003 Guide to All Things Good in Europe"; 
+print str_replace("2003","2004",$string); 
 
-$text = "\t\t\tlots of room to breathe ";
-echo ltrim($text);  // Output: 'lots of room to breathe '
-
-$text = "\t\t\tlots of room to breathe ";
-echo rtrim($text);  // Output: ' lots of room to breathe'
 ?>
