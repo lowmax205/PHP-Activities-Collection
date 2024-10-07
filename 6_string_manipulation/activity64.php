@@ -1,5 +1,6 @@
 <?php
-$membership = "mz99xyz";
-$membership = substr_replace($membership, "00", 2, 2);
-echo "New membership number: $membership<br/>";  // Output: New membership number: mz00xyz
+$membership = "mz00xyz"; 
+if (strpos($membership, "mz") === 0) {
+    echo "hello mz";  // Output: hello mz
+}
 ?>

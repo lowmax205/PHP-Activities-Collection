@@ -1,3 +1,5 @@
 <?php
-echo strlen("Christopher");  // Output: 11
+$dollars = "20 dollars";
+printf ("%d", $dollars);
+
 ?>

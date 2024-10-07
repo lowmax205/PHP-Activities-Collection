@@ -1,9 +1,16 @@
 <?php
-echo trim(" sample string ");  // Output: 'sample string'
+// Array of dates (month, day, year)
+$dates = array(
+    array('mon' => 12, 'mday' => 25, 'year' => 2001),
+    array('mon' => 5, 'mday' => 23, 'year' => 2000),
+    array('mon' => 10, 'mday' => 29, 'year' => 2001)
+);
 
-$text = "\t\t\tlots of room to breathe ";
-echo ltrim($text);  // Output: 'lots of room to breathe '
+// Include format from external file
+$format = include("local_format.php");
 
-$text = "\t\t\tlots of room to breathe ";
-echo rtrim($text);  // Output: ' lots of room to breathe'
+// Iterate over the dates and print each one with swapped arguments
+foreach ($dates as $date) {
+    printf($format, $date['mon'], $date['mday'], $date['year']);
+}
 ?>
