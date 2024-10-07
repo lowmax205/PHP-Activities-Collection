@@ -106,7 +106,7 @@
             <h2>String Manipulation</h2>
             <ul>
                 <?php
-                for ($i = 54; $i <=70 ; $i++) {
+                for ($i = 54; $i <=82 ; $i++) {
                     echo "<li><a href='6_string_manipulation/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
@@ -116,7 +116,7 @@
             <h2>Objects</h2>
             <ul>
                 <?php
-                for ($i = 71; $i <=82 ; $i++) {
+                for ($i = 0; $i <=0 ; $i++) {
                     echo "<li><a href='7_objects/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
@@ -126,7 +126,7 @@
             <h2>Files</h2>
             <ul>
                 <?php
-                for ($i = 82; $i <=90 ; $i++) {
+                for ($i = 0; $i <=0 ; $i++) {
                     echo "<li><a href='8_files/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
@@ -136,7 +136,7 @@
             <h2>Database</h2>
             <ul>
                 <?php
-                for ($i = 91; $i <=100 ; $i++) {
+                for ($i = 0; $i <=0 ; $i++) {
                     echo "<li><a href='9_database/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
@@ -146,7 +146,7 @@
             <h2>Cookies Session</h2>
             <ul>
                 <?php
-                for ($i = 101; $i <=110 ; $i++) {
+                for ($i = 0; $i <=0 ; $i++) {
                     echo "<li><a href='10_cookies_sessions/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
@@ -156,7 +156,7 @@
             <h2>MVC model</h2>
             <ul>
                 <?php
-                for ($i = 111; $i <=120 ; $i++) {
+                for ($i = 0; $i <=0 ; $i++) {
                     echo "<li><a href='11_mvc_model/activity$i.php'>Activity #$i</a></li>";
                 }
                 ?>
