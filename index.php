@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_GET['success'])) {
+    $success_message = htmlspecialchars($_GET['success']);
+    echo "<p style='color: green;'>$success_message</p>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +19,37 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+    }
+
+    header {
+        background-color: green;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+    }
+
+    header form {
+        display: inline;
+        margin-left: 20px;
+    }
+
+    header button {
+        background-color: red;
+        color: white;
+        border: none;
+        margin: 20px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    header button:hover {
+        background-color: darkred;
     }
 
     .container {
@@ -48,9 +88,16 @@
         text-decoration: underline;
     }
     </style>
+
 </head>
 
 <body>
+    <header>
+        <h1>Activity List</h1>
+        <form action="logout.php" method="POST" style="display: inline;">
+            <button type="submit">Logout</button>
+        </form>
+    </header>
     <div class="container">
         <div class="column">
             <h2>Basic PHP</h2>
