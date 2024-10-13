@@ -16,20 +16,24 @@ if (isset($_GET['success'])) {
     <title>Activity List</title>
     <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
     }
 
     header {
-        background-color: green;
+        background: linear-gradient(90deg, #4caf50, #81c784);
         color: white;
-        padding: 15px;
+        padding: 20px;
         text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
         margin: 0;
+        font-size: 2em;
     }
 
     header form {
@@ -38,36 +42,44 @@ if (isset($_GET['success'])) {
     }
 
     header button {
-        background-color: red;
+        background-color: #e53935;
         color: white;
         border: none;
-        margin: 20px;
-        padding: 10px 15px;
+        padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
+        transition: background-color 0.3s ease;
     }
 
     header button:hover {
-        background-color: darkred;
+        background-color: #d32f2f;
     }
 
     .container {
-        display: flex;
-        justify-content: space-around;
-        padding: 10px;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px;
     }
 
     .column {
-        border: 2px solid black;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
         padding: 20px;
-        width: 20%;
-        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .column:hover {
+        transform: translateY(-5px);
     }
 
     .column h2 {
         text-align: center;
+        font-size: 1.5em;
+        margin-bottom: 10px;
     }
 
     .column ul {
@@ -81,11 +93,13 @@ if (isset($_GET['success'])) {
 
     .column ul li a {
         text-decoration: none;
-        color: black;
+        color: #4caf50;
+        transition: color 0.3s ease;
     }
 
     .column ul li a:hover {
         text-decoration: underline;
+        color: #388e3c;
     }
     </style>
 
