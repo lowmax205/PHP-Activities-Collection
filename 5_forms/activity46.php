@@ -4,7 +4,7 @@
     <title>A Simple HTML Form</title> 
 </head> 
 <body> 
-    <form action="Exer47.php" method="POST"> 
+    <form action="activity47.php" method="POST"> 
         <input type="text" name="user"  />
         <textarea name="address" rows="5" cols="40" ></textarea> 
         <input type="submit" value="Hit it!" /> 

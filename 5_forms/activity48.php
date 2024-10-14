@@ -1,4 +1,4 @@
-<form action="Exer49.php" method="POST">
+<form action="activity49.php" method="POST">
 <input type="text" name="user" />
    <input name="address" type="text" value="
  " size="40" />
