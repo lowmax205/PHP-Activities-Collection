@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['logged_in'] = true;
             echo "Register Successfully";
             sleep(1);
-            header('Location: login.php?success=registering');
+            header('Location: index.php?success=registering');
             exit();
         } else {
             $error = "Error registering. Please try again.";
