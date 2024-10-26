@@ -1,54 +1,38 @@
 <?php
 session_start();
 require 'config.php'; // Include the database configuration
+
 $error = "";
 
-if (isset($_POST['login'])) {
-    $username = $conn->real_escape_string($_POST['username']); // Sanitize input
-    $password = $conn->real_escape_string($_POST['password']); // Sanitize input
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = htmlspecialchars($_POST['username']); // Sanitize input
+    $password = htmlspecialchars($_POST['password']); // Sanitize input
 
-    $result = $conn->query("SELECT * FROM users WHERE username='$username'");
+    // Prepare and execute the query
+    $stmt = $conn->prepare("SELECT * FROM users WHERE user_text = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     if ($result->num_rows > 0) {
-
         $row = $result->fetch_assoc();
-        if ($password == $row["password"]) {
-            $_SESSION['username'] = $row['username'];
+
+        // Verify password
+        if ($password === $row['pwd_text']) {
+            $_SESSION['username'] = $row['user_text'];
             header('Location: index.php?success=login');
             exit();
         } else {
             $error = 'Password incorrect!';
         }
     } else {
-        $error = 'Username incorrect!!';
+        $error = 'Username incorrect!';
     }
+
+    $stmt->close();
 }
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $username = $_POST['username'];
-//     $password = $_POST['password'];
-
-//     // Prepare the SQL query to check user credentials
-//     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-
-//     // Execute the query
-//     $stmt = $conn->query($sql);
-
-//     // Fetch the user data
-//     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//     // Validate user credentials
-//     if ($user) {
-//         // User found, set session variable and redirect
-//         $_SESSION['logged_in'] = true;
-//         $error = "Login Successfully";
-//         sleep(1);
-//         header('Location: index.php?success=login');
-//         exit();
-//     } else {
-//         // Invalid credentials
-//         $error = "Invalid credentials. Please try again.";
-//     }
-// }
+$conn->close();
 ?>
 
 
@@ -136,7 +120,7 @@ if (isset($_POST['login'])) {
             <button type="submit">Login</button>
         </form>
         <br>
-        <button onclick="register.php">Register</button>
+        <button onclick="window.location.href='register.php'">Register</button>
     </div>
 </body>
 
