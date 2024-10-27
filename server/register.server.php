@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($insertStmt->execute()) {
             // Registration successful
             $_SESSION['logged_in'] = true;
-            header('Location: login.php?success=registering');
+            header('Location: ../login.php');
             exit();
         } else {
             $error = "Error registering. Please try again.";

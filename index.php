@@ -19,100 +19,13 @@ if (isset($_GET['success'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity List</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        header {
-            background: linear-gradient(90deg, #4caf50, #81c784);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
-
-        header form {
-            display: inline;
-            margin-left: 20px;
-        }
-
-        header button {
-            background-color: #e53935;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        header button:hover {
-            background-color: #d32f2f;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .column {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .column:hover {
-            transform: translateY(-5px);
-        }
-
-        .column h2 {
-            text-align: center;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .column ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .column ul li {
-            margin: 10px 0;
-        }
-
-        .column ul li a {
-            text-decoration: none;
-            color: #4caf50;
-            transition: color 0.3s ease;
-        }
-
-        .column ul li a:hover {
-            text-decoration: underline;
-            color: #388e3c;
-        }
-    </style>
+    <link rel="stylesheet" href="css/activty_style.css">
 </head>
 
 <body>
     <header>
         <h1>Activity List</h1>
-        <form action="logout.php" method="POST" style="display: inline;">
+        <form action="server/logout.server.php" method="POST" style="display: inline;">
             <button type="submit">Logout</button>
         </form>
     </header>

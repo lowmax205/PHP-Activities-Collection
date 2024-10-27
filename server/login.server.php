@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Verify password
         if ($password === $row['pwd_text']) {
             $_SESSION['username'] = $row['user_text'];
-            header('Location: \index.php?success=login');
+            header('Location: ../index.php?success=login');
             exit();
         } else {
             $error = 'Password incorrect!';
