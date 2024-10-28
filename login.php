@@ -14,7 +14,8 @@ include 'server/login.server.php';
 <body>
     <div class="container">
         <h2>Login to view activities</h2>
-        <?php if (!empty($error)) { // Check if there is an error message ?>
+        <?php if (!empty($error)) { // Check if there is an error message 
+        ?>
             <p style='color:red;'><?php echo htmlspecialchars($error); ?></p>
         <?php } ?>
         <form action="login.php" method="POST">
