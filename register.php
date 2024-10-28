@@ -1,3 +1,6 @@
+<?php
+include 'server/register.server.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +15,9 @@
     <div class="container">
         <h2>Register</h2>
         <?php if (!empty($error)) { ?>
-        <p class="error"><?php echo $error; ?></p>
+            <p class="error"><?php echo $error; ?></p>
         <?php } ?>
-        <form action="server/register.server.php" method="POST">
+        <form action="register.php" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>

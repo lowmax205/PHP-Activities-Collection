@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.server.php'; 
+require 'config.server.php';
 // Enable error reporting
 
 $error = "";
@@ -10,34 +10,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     // Check if username already exists
-    $checkQuery = "SELECT * FROM users WHERE user_text = ?";
-    $checkStmt = $conn->prepare($checkQuery);
-    $checkStmt->bind_param('s', $username);
-    $checkStmt->execute();
-    $checkStmt->store_result();
+    $checkQuery = "SELECT * FROM users WHERE user_text = '$username'";
+    $checkResult = mysqli_query($conn, $checkQuery);
 
-    if ($checkStmt->num_rows > 0) {
+    if (mysqli_num_rows($checkResult) > 0) {
         // Username already exists
         $error = "Username already taken. Please choose another.";
     } else {
-        // Insert new user into the database with a hashed password
-        $insertQuery = "INSERT INTO users (user_text, pwd_text) VALUES (?, ?)";
-        $insertStmt = $conn->prepare($insertQuery);
+        // Insert new user into the database with a hashed password and default role as 'student'
+        $insertQuery = "INSERT INTO users (user_text, pwd_text, role) VALUES ('$username', '$password', 'student')";
 
-        $insertStmt->bind_param('ss', $username, $password);
-
-        if ($insertStmt->execute()) {
+        if (mysqli_query($conn, $insertQuery)) {
             // Registration successful
             $_SESSION['logged_in'] = true;
-            header('Location: ../login.php');
+            header('Location: ./login.php');
             exit();
         } else {
             $error = "Error registering. Please try again.";
         }
     }
 
-    $checkStmt->close();
-    $insertStmt->close();
+    mysqli_free_result($checkResult);
 }
-$conn->close();
-?>
+mysqli_close($conn);

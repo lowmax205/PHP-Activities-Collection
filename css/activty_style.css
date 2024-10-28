@@ -84,3 +84,31 @@ header button:hover {
   text-decoration: underline;
   color: #388e3c;
 }
+
+/* Styles for the Edit User Notification */
+#editUserNotification {
+  display: none;
+  /* Initially hidden */
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Overlay styles */
+#overlay {
+  display: none;
+  /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}

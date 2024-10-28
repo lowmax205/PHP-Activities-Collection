@@ -1,3 +1,6 @@
+<?php
+include 'server/login.server.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,17 +10,18 @@
     <link rel="stylesheet" href="css/credential_style.css">
     <title>Login</title>
 </head>
+
 <body>
     <div class="container">
         <h2>Login to view activities</h2>
         <?php if (!empty($error)) { // Check if there is an error message ?>
-        <p style='color:red;'><?php echo htmlspecialchars($error); ?></p>
+            <p style='color:red;'><?php echo htmlspecialchars($error); ?></p>
         <?php } ?>
-        <form action="server/login.server.php" method="POST">
+        <form action="login.php" method="POST">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
+            <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
+            <input type="password" id="password" name="password" required>
             <button type="submit">Login</button>
         </form>
         <br>
