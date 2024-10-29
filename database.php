@@ -38,7 +38,7 @@ try {
         }
         $result->free();
     } else {
-        echo "Error fetching data: " . $conn->error; // Use $conn for error reporting
+        echo "Error fetching data: " . $conn->error;
     }
 } catch (Exception $e) {
     echo "Error fetching data: " . $e->getMessage();
