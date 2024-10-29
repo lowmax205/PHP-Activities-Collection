@@ -65,6 +65,9 @@ try {
         <form action="server/logout.server.php" method="POST" style="display: inline;">
             <button type="submit">Logout</button>
         </form>
+        <form action="index.php" method="GET" style="display: inline;">
+            <button type="submit">Go Back</button>
+        </form>
     </header>
     <div class="container">
         <div class="column">
@@ -94,6 +97,7 @@ try {
             </table>
         </div>
     </div>
+    <div id="overlay"></div>
 
     <!-- Edit User Notification -->
     <div id="editUserNotification">
