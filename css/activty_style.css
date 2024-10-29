@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -111,4 +112,86 @@ header button:hover {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+}
+
+/* Table Styles */
+.table {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table h2 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #4caf50;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Link Styles */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Media Query for Max Width of 300px */
+@media (max-width: 420px) {
+  .container,
+  .column,
+  .table,
+  #editUserNotification {
+    width: 100%;
+    max-width: 380px;
+    padding: 5px;
+    margin: 5 auto;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .column h2,
+  .table h2 {
+    font-size: 1.25em;
+  }
+
+  header button,
+  .column ul li a,
+  button {
+    font-size: 14px;
+    margin: 5px;
+  }
 }

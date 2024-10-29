@@ -65,10 +65,13 @@ try {
         <form action="server/logout.server.php" method="POST" style="display: inline;">
             <button type="submit">Logout</button>
         </form>
+        <form action="index.php" method="POST" style="display: inline;">
+            <button type="submit">Go Back</button>
+        </form>
     </header>
     <div class="container">
-        <div class="column">
-            <h2>Database Management</h2>
+        <div class="table">
+            <h2>User Details List</h2>
             <table>
                 <thead>
                     <tr>
