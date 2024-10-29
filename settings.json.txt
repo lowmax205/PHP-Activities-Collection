@@ -1,17 +1,12 @@
 {
-  // ... fiveServer ...
-  "fiveServer.ignore": [],
-  "fiveServer.php.executable": "D:/xampp/php/php.exe",
-  "fiveServer.php.ini": "D:/xampp/php/php.ini",
-  "fiveServer.highlight": false,
-  "fiveServer.browser": ["http://localhost/CS311-PHP-ACTIVITY/"],
-  "fiveServer.port": 5500,
-  "fiveServer.host": "localhost",
   // ... php ...
   "php.suggest.basic": true,
   "php.debug.executablePath": "D:/xampp/php/",
   "php.validate.executablePath": "D:/xampp/php/php.exe",
   "php.executablePath": "D:/xampp/php/php.exe",
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
   // ... editor ...
   "editor.formatOnSave": true,
   "editor.fontWeight": "normal",
@@ -26,5 +21,18 @@
   // ... git ...
   "git.enableSmartCommit": true,
   "git.autofetch": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  // ... live server ...
+  "liveServer.settings.CustomBrowser": "microsoft-edge",
+  "liveServer.settings.proxy": {
+    "enable": true,
+    "baseUri": "/", //from where you want to proxy.
+    "proxyUri": "http://localhost/CS311-PHP-ACTIVITY/" //the actual url.
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.fullReload": true,
+  "liveServer.settings.root": "/",
+  "liveServer.settings.host": "localhost",
+  "liveServer.settings.useWebExt": true,
+  "liveServer.settings.port": 0
 }
