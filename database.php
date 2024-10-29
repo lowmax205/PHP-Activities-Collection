@@ -38,7 +38,7 @@ try {
         }
         $result->free();
     } else {
-        echo "Error fetching data: " . $conn->error; // Use $conn for error reporting
+        echo "Error fetching data: " . $conn->error;
     }
 } catch (Exception $e) {
     echo "Error fetching data: " . $e->getMessage();
@@ -64,9 +64,6 @@ try {
         <?php endif; ?>
         <form action="server/logout.server.php" method="POST" style="display: inline;">
             <button type="submit">Logout</button>
-        </form>
-        <form action="index.php" method="GET" style="display: inline;">
-            <button type="submit">Go Back</button>
         </form>
     </header>
     <div class="container">
@@ -98,7 +95,6 @@ try {
         </div>
     </div>
     <div id="overlay"></div>
-
     <!-- Edit User Notification -->
     <div id="editUserNotification">
         <h2>Edit User</h2>
