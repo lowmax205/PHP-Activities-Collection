@@ -50,19 +50,19 @@ The project is organized into the following folders:
 
 - **8_Files**
 
-  - Contains activities related to object.
+  - Contains activities related to Files.
   - Files: `activity___.php` to `activity___.php`
 
 - **9_Database**
 
-  - Contains activities related to object.
+  - Contains activities related to Database.
   - Files: `activity___.php` to `activity___.php`
 
 - **10_Cookies_Session**
 
-  - Contains activities related to object.
+  - Contains activities related to Cookies Session.
   - Files: `activity___.php` to `activity___.php`
 
 - **11_MVC_Model**
-  - Contains activities related to object.
+  - Contains activities related to MVC Model.
   - Files: `activity___.php` to `activity___.php`
