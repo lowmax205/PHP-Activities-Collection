@@ -51,6 +51,30 @@ function editUser($userId, $userData)
     }
 }
 
+function addUser($userData)
+{
+    global $conn; // Use the global mysqli connection
+
+    // Prepare the INSERT statement
+    $stmt = $conn->prepare("INSERT INTO users (user_text, pwd_text, role_text) VALUES (?, ?, ?)");
+    if ($stmt) {
+        // Bind the parameters
+        $stmt->bind_param("sss", $userData['user_text'], $userData['pwd_text'], $userData['role_text']);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "User added successfully.";
+        } else {
+            echo "Error adding user: " . $stmt->error;
+        }
+
+        // Close the statement
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error; // Use $conn for error reporting
+    }
+}
+
 // Example usage: delete a user with ID 1
 // deleteUser(1); // Uncomment this line to test the function
 

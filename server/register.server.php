@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Username already taken. Please choose another.";
     } else {
         // Insert new user into the database with a hashed password and default role as 'student'
-        $insertQuery = "INSERT INTO users (user_text, pwd_text, role) VALUES ('$username', '$password', 'student')";
+        $insertQuery = "INSERT INTO users (user_text, pwd_text, role_text) VALUES ('$username', '$password', 'student')";
 
         if (mysqli_query($conn, $insertQuery)) {
             // Registration successful

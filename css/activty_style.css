@@ -86,10 +86,10 @@ header button:hover {
   color: #388e3c;
 }
 
-/* Styles for the Edit User Notification */
-#editUserNotification {
+/* Styles for the Editing and Adding User Notification */
+#editUserNotification,
+#addUserNotification {
   display: none;
-  /* Initially hidden */
   position: fixed;
   top: 20%;
   left: 50%;
@@ -104,7 +104,6 @@ header button:hover {
 /* Overlay styles */
 #overlay {
   display: none;
-  /* Initially hidden */
   position: fixed;
   top: 0;
   left: 0;
@@ -172,7 +171,8 @@ a:hover {
   .container,
   .column,
   .table,
-  #editUserNotification {
+  #editUserNotification,
+  #addUserNotification {
     width: 100%;
     max-width: 380px;
     padding: 5px;
