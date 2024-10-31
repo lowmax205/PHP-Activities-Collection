@@ -75,9 +75,6 @@ function addUser($userData)
     }
 }
 
-// Example usage: delete a user with ID 1
-// deleteUser(1); // Uncomment this line to test the function
-
 // Fetch data from the database
 $data = [];
 try {
