@@ -1,9 +1,13 @@
 <?php
-class Shop {
-    private static $instance;
-    public $name = "shop";
+class Item {
+    public static $SALES_TAX = 10; // Static property
 
-    // Private constructor prevents direct instantiation
-    private function __construct() {}
+    // Static method to calculate tax
+    public static function calcTax($amount) {
+        return $amount + ($amount / (Item::$SALES_TAX / 100));
+    }
 }
+
+$amount = 10;
+print "Given a cost of $amount, the total will be " . Item::calcTax($amount); // Output: 11
 ?>

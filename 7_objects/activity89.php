@@ -1,13 +1,25 @@
 <?php
-class MyClass {
-    const PI = 3.14; // Define a constant
+class Item {
+    var $name;
+    var $code; // Add the code property
 
-    // Static method to access constant
-    public static function getPi() {
-        return self::PI;
+    // Constructor to initialize name and code
+    function __construct($name = "item", $code = 0) {
+        $this->name = $name;
+        $this->code = $code;
+    }
+
+    function getName() {
+        return $this->name;
     }
 }
 
-// Access constant directly using class name
-print MyClass::PI; // Output: 3.14
+// PriceItem extends Item, inheriting its properties and methods
+class PriceItem extends Item {
+    
+}
+
+// Instantiate PriceItem with name and code
+$item = new PriceItem("widget", 5442);
+print $item->getName(); // Output: widget
 ?>

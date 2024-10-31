@@ -158,6 +158,26 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/* Media Query for Max Width of 800px */
+@media (max-width: 800px) {
+  .container,
+  .column,
+  .table,
+  #editUserNotification,
+  #addUserNotification {
+    width: 100%;
+    max-width: 760px;
+    padding: 5px;
+    margin: 5;
+  }
+  .table td {
+    font-size: 0.5em;
+  }
+  .table th {
+    width: 100%;
+    font-size: 0.8em;
+  }
+}
 
 /* Media Query for Max Width of 300px */
 @media (max-width: 420px) {
@@ -169,7 +189,18 @@ a:hover {
     width: 100%;
     max-width: 380px;
     padding: 5px;
-    margin: 5 auto;
+    margin: 5;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .table td {
+    font-size: 0.2em;
+  }
+  .table th {
+    width: 100%;
+    font-size: 0.5em;
   }
 
   header h1 {
@@ -178,13 +209,13 @@ a:hover {
 
   .column h2,
   .table h2 {
-    font-size: 1.25em;
+    font-size: 1em;
   }
 
   header button,
   .column ul li a,
   button {
-    font-size: 14px;
-    margin: 5px;
+    font-size: 12px;
+    margin: 2px;
   }
 }

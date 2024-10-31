@@ -1,12 +1,11 @@
 <?php
 class Item {
-    var $name = "item"; // Property declaration
+    // Minimal class definition
 }
 
 $obj1 = new Item(); 
-$obj2 = new Item();
+$obj2 = new Item(); 
 
-$obj1->name = "widget 5442"; 
-print "$obj1->name<br />"; // Output: widget 5442
-print "$obj2->name<br />"; // Output: item
+print "\$obj1 is an " . gettype($obj1) . "<br />"; 
+print "\$obj2 is an " . gettype($obj2) . "<br />";
 ?>

@@ -122,9 +122,9 @@ try {
     </div>
     <div id="overlay"></div>
     <!-- Edit User Notification -->
-    <div id="editUserNotification">
+    <div id="editUserNotification" class="popup">
         <h2>Edit User</h2>
-        <form method="POST">
+        <form method="POST" class="popup-form">
             <label for="edit_user_id">ID: <span id="edit_user_id_display"></span></label>
             <input type="hidden" name="edit_user_id" id="edit_user_id">
             <br>
@@ -154,15 +154,15 @@ try {
             </select>
             <br>
             <input type="hidden" name="edit_user_id" id="edit_user_id">
-            <button type="submit">Update User</button>
-            <button type="button" onclick="closeNotification()">Cancel</button>
+            <button type="submit" class="submit-btn">Update User</button>
+            <button type="button" class="cancel-btn" onclick="closeNotification()">Cancel</button>
         </form>
     </div>
 
     <!-- Add User Notification -->
-    <div id="addUserNotification">
+    <div id="addUserNotification" class="popup">
         <h2>Add User</h2>
-        <form method="POST">
+        <form method="POST" class="popup-form">
             <input type="hidden" name="add_user" value="1" id="add_user">
             <label for="new_user_text">Username:</label>
             <input type="text" name="new_user_text" id="new_user_text" required>
@@ -192,8 +192,8 @@ try {
                 <option value="employed" id="employed_status">Employed</option>
             </select>
             <br>
-            <button type="submit">Add User</button>
-            <button type="button" onclick="closeNotification()">Cancel</button>
+            <button type="submit" class="submit-btn">Add User</button>
+            <button type="button" class="cancel-btn" onclick="closeNotification()">Cancel</button>
         </form>
     </div>
 

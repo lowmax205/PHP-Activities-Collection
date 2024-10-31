@@ -1,12 +1,13 @@
 <?php
-class Item {
-    public static $SALES_TAX = 9; // Static property
+class MyClass {
+    const PI = 3.14; // Define a constant
 
-    // Static method to access static property
-    public static function getSalesTax() {
-        return self::$SALES_TAX;
+    // Static method to access constant
+    public static function getPi() {
+        return self::PI;
     }
 }
 
-print "The tax to be levied on all items is " . Item::$SALES_TAX . "%"; // Output: 9%
+// Access constant directly using class name
+print MyClass::PI; // Output: 3.14
 ?>

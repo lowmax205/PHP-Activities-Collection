@@ -1,13 +1,12 @@
 <?php
 class Item {
-    var $name = "item"; // Property
-
-    // Method to return the name of the item
-    function getName() {
-        return "item";
-    }
+    var $name = "item"; // Property declaration
 }
 
-$item = new Item();
-print $item->getName(); // Output: item
+$obj1 = new Item(); 
+$obj2 = new Item();
+
+$obj1->name = "widget 5442"; 
+print "$obj1->name<br />"; // Output: widget 5442
+print "$obj2->name<br />"; // Output: item
 ?>

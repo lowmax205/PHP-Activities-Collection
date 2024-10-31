@@ -1,12 +1,20 @@
 <?php
-class Item {
-    var $name = "item"; // Property declaration
+class Shop {
+    private static $instance;
+    public $name = "shop";
+
+    // Static method to return the single instance
+    public static function getInstance() {
+        if (empty(self::$instance)) {
+            self::$instance = new Shop();
+        }
+        return self::$instance;
+    }
 }
 
-$obj1 = new Item(); 
-$obj2 = new Item();
+$first = Shop::getInstance();
+$first->name = "Acme Shopping Emporium"; 
+$second = Shop::getInstance(); 
 
-$obj1->name = "widget 5442"; 
-print "$obj1->name<br />"; // Output: widget 5442
-print "$obj2->name<br />"; // Output: item
+print $second->name; // Output: Acme Shopping Emporium
 ?>

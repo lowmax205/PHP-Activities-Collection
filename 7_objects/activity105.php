@@ -1,11 +1,20 @@
 <?php
-class Item {
-    // Minimal class definition
+class Shop {
+    private static $instance;
+    public $name = "shop";
+
+    // Static method to return the single instance
+    public static function getInstance() {
+        if (empty(self::$instance)) {
+            self::$instance = new Shop();
+        }
+        return self::$instance;
+    }
 }
 
-$obj1 = new Item(); 
-$obj2 = new Item(); 
+$first = Shop::getInstance();
+$first->name = "Acme Shopping Emporium"; 
+$second = Shop::getInstance(); 
 
-print "\$obj1 is an " . gettype($obj1) . "<br />"; 
-print "\$obj2 is an " . gettype($obj2) . "<br />";
+print $second->name; // Output: Acme Shopping Emporium
 ?>

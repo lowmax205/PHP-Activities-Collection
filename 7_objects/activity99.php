@@ -1,22 +1,17 @@
 <?php
-class Item {
-    var $name;
+class Product {
+    public $name;      // Public property
+    private $code;     // Private property
+    protected $type;   // Protected property
 
-    // Constructor to initialize name and code
-    function Item($name = "item", $code = 0) {
+    function __construct($name, $code, $type) {
         $this->name = $name;
         $this->code = $code;
+        $this->type = $type;
     }
 
-    function getName() {
-        return $this->name;
+    public function getProductInfo() {
+        return "Name: $this->name, Type: $this->type"; 
     }
 }
-
-// PriceItem extends Item, inheriting its properties and methods
-class PriceItem extends Item {
-}
-
-$item = new PriceItem("widget", 5442);
-print $item->getName(); // Output: widget
 ?>

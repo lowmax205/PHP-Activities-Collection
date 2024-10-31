@@ -1,13 +1,12 @@
 <?php
 class Item {
-    public static $SALES_TAX = 10; // Static property
+    public static $SALES_TAX = 9; // Static property
 
-    // Static method to calculate tax
-    public static function calcTax($amount) {
-        return $amount + ($amount / (Item::$SALES_TAX / 100));
+    // Static method to access static property
+    public static function getSalesTax() {
+        return self::$SALES_TAX;
     }
 }
 
-$amount = 10;
-print "Given a cost of $amount, the total will be " . Item::calcTax($amount); // Output: 11
+print "The tax to be levied on all items is " . Item::$SALES_TAX . "%"; // Output: 9%
 ?>

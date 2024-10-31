@@ -1,21 +1,14 @@
 <?php
 class Item {
-    var $name;
+    var $name = "item"; // Property
 
-    // Constructor to initialize the name
-    function Item($name = "item") {
-        $this->name = $name;
-    }
-
-    function setName($n) {
-        $this->name = $n;
-    }
-
+    // Method to access the property
     function getName() {
-        return $this->name;
+        return $this->name; // Accessing property using $this
     }
 }
 
-$item = new Item("widget 5442");
+$item = new Item();
+$item->name = "widget 5442"; // Modify the property
 print $item->getName(); // Output: widget 5442
 ?>

@@ -1,17 +1,21 @@
 <?php
-class Product {
-    public $name;      // Public property
-    private $code;     // Private property
-    protected $type;   // Protected property
+class Item {
+    var $name;
 
-    function __construct($name, $code, $type) {
+    // Constructor to initialize the name
+    function Item($name = "item") {
         $this->name = $name;
-        $this->code = $code;
-        $this->type = $type;
     }
 
-    public function getProductInfo() {
-        return "Name: $this->name, Type: $this->type"; 
+    function setName($n) {
+        $this->name = $n;
+    }
+
+    function getName() {
+        return $this->name;
     }
 }
+
+$item = new Item("widget 5442");
+print $item->getName(); // Output: widget 5442
 ?>
