@@ -25,7 +25,8 @@ header form {
   margin-left: 20px;
 }
 
-header button {
+header button,
+.adduser {
   background-color: #e53935;
   color: white;
   border: none;
@@ -34,6 +35,10 @@ header button {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
+}
+.adduser {
+  background-color: #007bff;
+  color: white;
 }
 
 header button:hover {
@@ -99,18 +104,6 @@ header button:hover {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-}
-
-/* Overlay styles */
-#overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
 }
 
 /* Table Styles */

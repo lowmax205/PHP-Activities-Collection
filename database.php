@@ -7,6 +7,16 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit();
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userData = [
+        'user_text' => $_POST['new_user_text'],
+        'email_text' => $_POST['new_email_text'],
+        'pwd_text' => $_POST['new_pwd_text'],
+        'role_text' => $_POST['new_role_text'],
+        'status_text' => $_POST['new_status_text'],
+        'time_modify' => $_POST['new_time_modify'],
+    ];
+}
 
 // Handle delete request
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
@@ -17,25 +27,15 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
 }
 
 // Handle edit request
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user_id'])) {
+if (isset($_POST['edit_user_id'])) {
     $userId = intval($_POST['edit_user_id']);
-    $userData = [
-        'user_text' => $_POST['user_text'],
-        'pwd_text' => $_POST['pwd_text'],
-        'role_text' => $_POST['role_text'],
-    ];
     editUser($userId, $userData); // Call the editUser function
     header('Location: database.php?success=User updated successfully');
     exit();
 }
 
 // Handle add user request
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
-    $userData = [
-        'user_text' => $_POST['new_user_text'],
-        'pwd_text' => $_POST['new_pwd_text'],
-        'role_text' => $_POST['new_role_text'],
-    ];
+if (isset($_POST['add_user'])) {
     addUser($userData); // Call the addUser function (you need to implement this function)
     header('Location: database.php?success=User added successfully');
     exit();
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
 // Fetch data from the database
 $data = [];
 try {
-    $result = $conn->query("SELECT id, user_text, role_text FROM users");
+    $result = $conn->query("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify FROM users");
     if ($result) {
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
@@ -65,6 +65,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database Management</title>
     <link rel="stylesheet" href="css/activty_style.css">
+    <link rel="stylesheet" href="css/popup_style.css">
 </head>
 
 <body>
@@ -85,14 +86,17 @@ try {
     <div class="container">
         <div class="table">
             <h2>User Details List</h2>
-            <button onclick="showAddUserNotification()">Add User</button>
+            <button onclick="showAddUserNotification()" , class="adduser">Add User</button>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
                         <th>Role</th>
+                        <th>Status</th>
                         <th>Action</th>
+                        <th>Time Modify</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,11 +105,14 @@ try {
                         echo "<tr>
                                 <td>{$row['id']}</td>
                                 <td>{$row['user_text']}</td>
+                                <td>{$row['email_text']}</td>
                                 <td>{$row['role_text']}</td>
+                                <td>{$row['status_text']}</td>
                                 <td>
                                     <a href='#' onclick='editUser({$row['id']}, \"{$row['user_text']}\", \"{$row['role_text']}\")'>Edit</a> | 
                                     <a href='database.php?action=delete&id={$row['id']}' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a>
                                 </td>
+                                <td>{$row['time_modify']}</td>
                               </tr>";
                     }
                     ?>
@@ -121,8 +128,11 @@ try {
             <label for="edit_user_id">ID: <span id="edit_user_id_display"></span></label>
             <input type="hidden" name="edit_user_id" id="edit_user_id">
             <br>
-            <label for="user_text">User Text:</label>
+            <label for="user_text">Username:</label>
             <input type="text" name="user_text" id="user_text" required>
+            <br>
+            <label for="email_text">Email:</label>
+            <input type="email" name="email_text" id="email_text" required>
             <br>
             <label for="pwd_text">Password:</label>
             <input type="password" name="pwd_text" id="pwd_text" required>
@@ -134,6 +144,16 @@ try {
                 <option value="Student" id="role_student">Student</option>
             </select>
             <br>
+            <label for="status_text">Status:</label>
+            <select name="status_text" id="status_text" required>
+                <option value="" disabled>Select Status</option>
+                <option value="enrolled" id="enrolled_status">Enrolled</option>
+                <option value="transferee" id="transferee_status">Transferee</option>
+                <option value="irregular" id="irregular_status">Irregular</option>
+                <option value="employed" id="employed_status">Employed</option>
+            </select>
+            <br>
+            <input type="hidden" name="edit_user_id" id="edit_user_id">
             <button type="submit">Update User</button>
             <button type="button" onclick="closeNotification()">Cancel</button>
         </form>
@@ -147,6 +167,9 @@ try {
             <label for="new_user_text">Username:</label>
             <input type="text" name="new_user_text" id="new_user_text" required>
             <br>
+            <label for="email_text">Email:</label>
+            <input type="email" name="email_text" id="email_text" required>
+            <br>
             <label for="new_pwd_text">Password:</label>
             <input type="password" name="new_pwd_text" id="new_pwd_text" required>
             <br>
@@ -158,6 +181,15 @@ try {
                 <option value="" disabled selected>Select Role</option>
                 <option value="Teacher">Teacher</option>
                 <option value="Student">Student</option>
+            </select>
+            <br>
+            <label for="status_text">Status:</label>
+            <select name="status_text" id="status_text" required>
+                <option value="" disabled selected>Select Status</option>
+                <option value="enrolled" id="enrolled_status">Enrolled</option>
+                <option value="transferee" id="transferee_status">Transferee</option>
+                <option value="irregular" id="irregular_status">Irregular</option>
+                <option value="employed" id="employed_status">Employed</option>
             </select>
             <br>
             <button type="submit">Add User</button>
