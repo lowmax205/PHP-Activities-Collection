@@ -106,6 +106,7 @@
   z-index: 1000;
   white-space: pre-wrap; /* Preserve whitespace for code */
   min-width: 300px; /* Set minimum width */
+  max-width: 400px; /* Set maximum width to prevent excessive expansion */
   min-height: 300px; /* Set minimum height */
   overflow: auto; /* Allow scrolling if content is too long */
 }
