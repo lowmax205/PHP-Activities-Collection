@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (mysqli_query($conn, $insertQuery)) {
             // Registration successful
             $_SESSION['logged_in'] = true;
-            header('Location: ./login.php');
+            header('Location: ./userLogin.php');
             exit();
         } else {
             $error = "Error registering. Please try again.";

@@ -18,7 +18,7 @@ include 'server/login.server.php';
         ?>
             <p style='color:red;'><?php echo htmlspecialchars($error); ?></p>
         <?php } ?>
-        <form action="login.php" method="POST">
+        <form action="userLogin.php" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
@@ -26,7 +26,7 @@ include 'server/login.server.php';
             <button type="submit">Login</button>
         </form>
         <br>
-        <button onclick="window.location.href='register.php'">Register</button>
+        <button onclick="window.location.href='userRegistration.php'">Register</button>
     </div>
 </body>
 

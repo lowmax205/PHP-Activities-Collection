@@ -4,57 +4,42 @@ require 'server/credential.server.php'; // Include your credential file
 
 // Redirect to login if the user is not logged in
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
+    header('Location: userLogin.php');
     exit();
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $userData = [
         'user_text' => $_POST['new_user_text'],
         'email_text' => $_POST['new_email_text'],
         'pwd_text' => $_POST['new_pwd_text'],
         'role_text' => $_POST['new_role_text'],
-        'status_text' => $_POST['new_status_text'],
-        'time_modify' => $_POST['new_time_modify'],
+        'status_text' => $_POST['new_status_text']
     ];
-}
 
-// Handle delete request
-if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
-    $userId = intval($_GET['id']);
-    deleteUser($userId); // Call the deleteUser function
-    header('Location: database.php?success=User deleted successfully');
-    exit();
-}
-
-// Handle edit request
-if (isset($_POST['edit_user_id'])) {
-    $userId = intval($_POST['edit_user_id']);
-    editUser($userId, $userData); // Call the editUser function
-    header('Location: database.php?success=User updated successfully');
-    exit();
-}
-
-// Handle add user request
-if (isset($_POST['add_user'])) {
-    addUser($userData); // Call the addUser function (you need to implement this function)
-    header('Location: database.php?success=User added successfully');
-    exit();
-}
-
-// Fetch data from the database
-$data = [];
-try {
-    $result = $conn->query("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify FROM users");
-    if ($result) {
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-        $result->free();
-    } else {
-        echo "Error fetching data: " . $conn->error;
+    // Handle delete request
+    if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
+        $userId = intval($_GET['id']);
+        $error = deleteUser($userId); // Capture the error message
+        header('Location: userDatabaseDashboard.php?status=' . urlencode($error));
+        exit();
     }
-} catch (Exception $e) {
-    echo "Error fetching data: " . $e->getMessage();
+
+    // Handle edit request
+    if (isset($_POST['edit_user_id'])) {
+        $userId = intval($_POST['edit_user_id']);
+        $error = editUser($userId, $userData); // Capture the error message
+        header('Location: userDatabaseDashboard.php?status=' . urlencode($error));
+        exit();
+    }
+
+    // Handle add user request
+    if (isset($_POST['add_user'])) {
+        $error = addUser($userData); // Capture the error message
+        header('Location: userDatabaseDashboard.php?status=' . urlencode($error));
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -83,6 +68,16 @@ try {
             <button type="submit">Go Back</button>
         </form>
     </header>
+    <div class="error">
+        <p>STATUS:</p>
+        <?php if (isset($_GET['status']) && !empty($_GET['status'])) {
+            $statusMessage = htmlspecialchars($_GET['status']);
+        ?>
+            <p><?php echo $statusMessage; ?></p>
+        <?php } ?>
+    </div>
+
+
     <div class="container">
         <div class="table">
             <h2>User Details List</h2>
@@ -109,8 +104,8 @@ try {
                                 <td>{$row['role_text']}</td>
                                 <td>{$row['status_text']}</td>
                                 <td>
-                                    <a href='#' onclick='editUser({$row['id']}, \"{$row['user_text']}\", \"{$row['role_text']}\")'>Edit</a> | 
-                                    <a href='database.php?action=delete&id={$row['id']}' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a>
+                                    <a href='#' onclick='editUser({$row['id']}, \"{$row['user_text']}\", \"{$row['email_text']}\", \"{$row['pwd_text']}\", \"{$row['role_text']}\", \"{$row['status_text']}\")'>Edit</a> | 
+                                    <a href='userDatabaseDashboard.php?action=delete&id={$row['id']}' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a>
                                 </td>
                                 <td>{$row['time_modify']}</td>
                               </tr>";
@@ -127,27 +122,26 @@ try {
         <form method="POST" class="popup-form">
             <label for="edit_user_id">ID: <span id="edit_user_id_display"></span></label>
             <input type="hidden" name="edit_user_id" id="edit_user_id">
-            <label for="user_text">Username:</label>
-            <input type="text" name="user_text" id="user_text" required>
-            <label for="email_text">Email:</label>
-            <input type="email" name="email_text" id="email_text" required>
-            <label for="pwd_text">Password:</label>
-            <input type="password" name="pwd_text" id="pwd_text" required>
-            <label for="role_text">Role:</label>
-            <select name="role_text" id="role_text" required>
+            <label for="new_user_text">Username:</label>
+            <input type="text" name="new_user_text" id="new_user_text" required>
+            <label for="new_email_text">Email:</label>
+            <input type="email" name="new_email_text" id="new_email_text" required>
+            <label for="new_pwd_text">Password:</label>
+            <input type="password" name="new_pwd_text" id="new_pwd_text" required>
+            <label for="new_role_text">Role:</label>
+            <select name="new_role_text" id="new_role_text" required>
                 <option value="" disabled>Select Role</option>
-                <option value="Teacher" id="role_teacher">Teacher</option>
-                <option value="Student" id="role_student">Student</option>
+                <option value="teacher" id="role_teacher">Teacher</option>
+                <option value="student" id="role_student">Student</option>
             </select>
-            <label for="status_text">Status:</label>
-            <select name="status_text" id="status_text" required>
+            <label for="new_status_text">Status:</label>
+            <select name="new_status_text" id="new_status_text" required>
                 <option value="" disabled>Select Status</option>
                 <option value="enrolled" id="enrolled_status">Enrolled</option>
                 <option value="transferee" id="transferee_status">Transferee</option>
                 <option value="irregular" id="irregular_status">Irregular</option>
                 <option value="employed" id="employed_status">Employed</option>
             </select>
-            <input type="hidden" name="edit_user_id" id="edit_user_id">
             <button type="submit" class="submit-btn">Update User</button>
             <button type="button" class="cancel-btn" onclick="closeNotification()">Cancel</button>
         </form>
@@ -161,7 +155,7 @@ try {
             <label for="new_user_text">Username:</label>
             <input type="text" name="new_user_text" id="new_user_text" required>
             <label for="email_text">Email:</label>
-            <input type="email" name="email_text" id="email_text" required>
+            <input type="email" name="new_email_text" id="email_text" required>
             <label for="new_pwd_text">Password:</label>
             <input type="password" name="new_pwd_text" id="new_pwd_text" required>
             <label for="confirm_pwd_text">Confirm Password:</label>
@@ -172,8 +166,8 @@ try {
                 <option value="Teacher">Teacher</option>
                 <option value="Student">Student</option>
             </select>
-            <label for="status_text">Status:</label>
-            <select name="status_text" id="status_text" required>
+            <label for="new_status_text">Status:</label>
+            <select name="new_status_text" id="new_status_text" required>
                 <option value="" disabled selected>Select Status</option>
                 <option value="enrolled" id="enrolled_status">Enrolled</option>
                 <option value="transferee" id="transferee_status">Transferee</option>
@@ -185,7 +179,7 @@ try {
         </form>
     </div>
 
-    <script src="javascript/DatabaseScript.js"></script>
+    <script src="javascript/userPopup.js"></script>
 </body>
 
 </html>

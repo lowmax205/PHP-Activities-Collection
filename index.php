@@ -2,7 +2,7 @@
 session_start();
 // Redirect to login if the user is not logged in
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
+    header('Location: userLogin.php');
     exit();
 }
 ?>
@@ -28,7 +28,7 @@ if (!isset($_SESSION['username'])) {
             <button type="submit">Logout</button>
         </form>
         <?php if ($_SESSION['role_text'] === 'teacher'): ?>
-            <form action="database.php" method="GET" style="display: inline;">
+            <form action="userDatabaseDashboard.php" method="GET" style="display: inline;">
                 <button type="submit">Database</button>
             </form>
         <?php endif; ?>

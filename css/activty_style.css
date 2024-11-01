@@ -162,9 +162,7 @@ a:hover {
 @media (max-width: 800px) {
   .container,
   .column,
-  .table,
-  #editUserNotification,
-  #addUserNotification {
+  .table {
     width: 100%;
     max-width: 760px;
     padding: 5px;
@@ -183,9 +181,7 @@ a:hover {
 @media (max-width: 420px) {
   .container,
   .column,
-  .table,
-  #editUserNotification,
-  #addUserNotification {
+  .table {
     width: 100%;
     max-width: 380px;
     padding: 5px;
