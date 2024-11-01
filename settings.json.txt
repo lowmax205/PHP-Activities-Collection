@@ -9,15 +9,15 @@
   },
   // ... editor ...
   "editor.formatOnSave": true,
-  "editor.fontWeight": "normal",
+  // "editor.fontWeight": "normal",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // ... html and css ...
   "html.format.contentUnformatted": "",
   "css.styleSheets": ["src/**/*.css"],
   // ... Theme ...
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Visual Studio Dark",
-  "files.refactoring.autoSave": false,
+  // "workbench.colorTheme": "Default Dark Modern",
+  // "files.refactoring.autoSave": false,
   // ... git ...
   "git.enableSmartCommit": true,
   "git.autofetch": true,
@@ -26,8 +26,8 @@
   "liveServer.settings.CustomBrowser": "microsoft-edge",
   "liveServer.settings.proxy": {
     "enable": true,
-    "baseUri": "/", //from where you want to proxy.
-    "proxyUri": "http://localhost/CS311-PHP-ACTIVITY/" //the actual url.
+    "baseUri": "/",
+    "proxyUri": "http://localhost/PHP-Activities-Collection/"
   },
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.fullReload": true,
