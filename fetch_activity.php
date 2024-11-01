@@ -1,12 +1,12 @@
 <?php
 if (isset($_GET['folder']) && isset($_GET['file'])) {
-    $folder = basename($_GET['folder']); // Get the folder name safely
-    $file = basename($_GET['file']); // Get the file name safely
-    $path = $folder . "/" . $file; // Construct the path dynamically
+    $folder = basename($_GET['folder']);    
+    $file = basename($_GET['file']); 
+    $path = $folder . "/" . $file; 
 
     if (file_exists($path)) {
-        header('Content-Type: text/plain'); // Set content type to plain text
-        echo htmlspecialchars(file_get_contents($path)); // Read and output the file content
+        header('Content-Type: text/plain'); 
+        echo htmlspecialchars(file_get_contents($path)); 
     } else {
         echo 'File not found.';
     }
