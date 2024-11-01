@@ -8,6 +8,14 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+// Handle delete request
+if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
+    $userId = intval($_GET['id']);
+    $error = deleteUser($userId); // Capture the error message
+    header('Location: userDatabaseDashboard.php?status=' . urlencode($error));
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $userData = [
@@ -17,15 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'role_text' => $_POST['new_role_text'],
         'status_text' => $_POST['new_status_text']
     ];
-
-    // Handle delete request
-    if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
-        $userId = intval($_GET['id']);
-        $error = deleteUser($userId); // Capture the error message
-        header('Location: userDatabaseDashboard.php?status=' . urlencode($error));
-        exit();
-    }
-
     // Handle edit request
     if (isset($_POST['edit_user_id'])) {
         $userId = intval($_POST['edit_user_id']);
