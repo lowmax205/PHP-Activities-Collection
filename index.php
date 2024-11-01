@@ -111,7 +111,7 @@ if (!isset($_SESSION['username'])) {
             <h2>Files</h2>
             <ul>
                 <?php
-                for ($i = 0; $i <= 0; $i++) {
+                for ($i = 107; $i <= 120; $i++) {
                     echo "<a href='8_files/activity$i.php'><li onmouseover=\"fetchContent('8_files','activity$i.php', event)\" onmouseout=\"hideTooltip()\">Activity #$i</li></a>";
                 }
                 ?>
@@ -132,7 +132,7 @@ if (!isset($_SESSION['username'])) {
             <ul>
                 <?php
                 for ($i = 0; $i <= 0; $i++) {
-                    echo "<a href='10_cookies_sessions/activity$i.php'><li onmouseover=\"fetchContent('10_cookies_sessions','activity$i.php', event)\" onmouseout=\"hideTooltip()\">Activity #$i</li></a>";
+                    echo "<a href='10_cookies_session/activity$i.php'><li onmouseover=\"fetchContent('10_cookies_session','activity$i.php', event)\" onmouseout=\"hideTooltip()\">Activity #$i</li></a>";
                 }
                 ?>
             </ul>
