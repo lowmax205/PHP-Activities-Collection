@@ -61,10 +61,6 @@ header button:hover {
   transition: transform 0.3s ease;
 }
 
-.column:hover {
-  transform: translateY(-5px);
-}
-
 .column h2 {
   text-align: center;
   font-size: 1.5em;
@@ -76,19 +72,33 @@ header button:hover {
   padding: 0;
 }
 
-.column ul li {
-  margin: 10px 0;
+.column ul a li {
+  padding: 10px 10px;
+  margin: 5px 0;
+  border-width: 2px; /* Set border width */
+  border-style: solid;
+  border-radius: 10px;
+  border-image: linear-gradient(to right, #4caf50, #81c784) 1; /* Gradient border */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Slightly transparent background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.column ul li a {
+.column ul a li:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  text-decoration: underline;
+  color: #388e3c;
+}
+
+.column ul a li {
   text-decoration: none;
   color: #4caf50;
   transition: color 0.3s ease;
-}
-
-.column ul li a:hover {
-  text-decoration: underline;
-  color: #388e3c;
 }
 
 /* Styles for the Editing and Adding User Notification */

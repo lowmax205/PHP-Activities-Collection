@@ -95,3 +95,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
+/* Add styles for the tooltip */
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: black; /* Change background to black */
+  color: white; /* Change text color to white */
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+  white-space: pre-wrap; /* Preserve whitespace for code */
+  min-width: 300px; /* Set minimum width */
+  min-height: 300px; /* Set minimum height */
+  overflow: auto; /* Allow scrolling if content is too long */
+}
