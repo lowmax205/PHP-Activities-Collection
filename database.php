@@ -127,23 +127,18 @@ try {
         <form method="POST" class="popup-form">
             <label for="edit_user_id">ID: <span id="edit_user_id_display"></span></label>
             <input type="hidden" name="edit_user_id" id="edit_user_id">
-            <br>
             <label for="user_text">Username:</label>
             <input type="text" name="user_text" id="user_text" required>
-            <br>
             <label for="email_text">Email:</label>
             <input type="email" name="email_text" id="email_text" required>
-            <br>
             <label for="pwd_text">Password:</label>
             <input type="password" name="pwd_text" id="pwd_text" required>
-            <br>
             <label for="role_text">Role:</label>
             <select name="role_text" id="role_text" required>
                 <option value="" disabled>Select Role</option>
                 <option value="Teacher" id="role_teacher">Teacher</option>
                 <option value="Student" id="role_student">Student</option>
             </select>
-            <br>
             <label for="status_text">Status:</label>
             <select name="status_text" id="status_text" required>
                 <option value="" disabled>Select Status</option>
@@ -152,7 +147,6 @@ try {
                 <option value="irregular" id="irregular_status">Irregular</option>
                 <option value="employed" id="employed_status">Employed</option>
             </select>
-            <br>
             <input type="hidden" name="edit_user_id" id="edit_user_id">
             <button type="submit" class="submit-btn">Update User</button>
             <button type="button" class="cancel-btn" onclick="closeNotification()">Cancel</button>
@@ -166,23 +160,18 @@ try {
             <input type="hidden" name="add_user" value="1" id="add_user">
             <label for="new_user_text">Username:</label>
             <input type="text" name="new_user_text" id="new_user_text" required>
-            <br>
             <label for="email_text">Email:</label>
             <input type="email" name="email_text" id="email_text" required>
-            <br>
             <label for="new_pwd_text">Password:</label>
             <input type="password" name="new_pwd_text" id="new_pwd_text" required>
-            <br>
             <label for="confirm_pwd_text">Confirm Password:</label>
             <input type="password" name="confirm_pwd_text" id="confirm_pwd_text" required>
-            <br>
             <label for="new_role_text">Role:</label>
             <select name="new_role_text" id="new_role_text" required>
                 <option value="" disabled selected>Select Role</option>
                 <option value="Teacher">Teacher</option>
                 <option value="Student">Student</option>
             </select>
-            <br>
             <label for="status_text">Status:</label>
             <select name="status_text" id="status_text" required>
                 <option value="" disabled selected>Select Status</option>
@@ -191,7 +180,6 @@ try {
                 <option value="irregular" id="irregular_status">Irregular</option>
                 <option value="employed" id="employed_status">Employed</option>
             </select>
-            <br>
             <button type="submit" class="submit-btn">Add User</button>
             <button type="button" class="cancel-btn" onclick="closeNotification()">Cancel</button>
         </form>

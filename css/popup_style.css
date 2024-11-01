@@ -16,24 +16,24 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  transform: translate(-50%, -50%);
   width: 90%;
   max-width: 400px;
+  max-height: 90vh; /* Keep within viewport height */
+  overflow-y: auto; /* Enable scroll if needed */
   background: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 11;
-  overflow: hidden; /* Prevent content overflow */
-  box-sizing: border-box; /* Include padding in total width */
+  box-sizing: border-box;
 }
 
-/* Heading styling */
+/* Form styling within the popup */
 .popup h2 {
-  margin: 0 0 15px; /* Ensure heading has space within the popup */
+  margin: 0 0 15px;
   color: #333;
   font-size: 1.5rem;
-  overflow-wrap: break-word; /* Wrap long text */
 }
 
 .popup-form {
@@ -42,20 +42,20 @@
 }
 
 .popup label {
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   font-size: 0.9rem;
   color: #555;
 }
 
-.popup input[type="text"],
-.popup input[type="email"],
-.popup input[type="password"],
+.popup input,
 .popup select {
   padding: 8px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .submit-btn,

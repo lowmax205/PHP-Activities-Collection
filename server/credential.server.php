@@ -1,84 +1,73 @@
 <?php
 require 'config.server.php';
 
-// Function to delete a user from the users table
 function deleteUser($userId)
 {
-    global $conn; // Use the global mysqli connection
-
-    // Prepare the DELETE statement
+    global $conn;
     $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
     if ($stmt) {
-        // Bind the user ID parameter
         $stmt->bind_param("i", $userId);
-
-        // Execute the statement
-        if ($stmt->execute()) {
-            echo "User deleted successfully.";
-        } else {
+        if (!$stmt->execute()) {
             echo "Error deleting user: " . $stmt->error;
         }
-
-        // Close the statement
         $stmt->close();
     } else {
-        echo "Error preparing statement: " . $conn->error; // Use $conn for error reporting
+        echo "Error preparing statement: " . $conn->error;
     }
 }
 
-// Function to edit user data
 function editUser($userId, $userData)
 {
-    global $conn; // Use the global mysqli connection
-
-    // Prepare the UPDATE statement
-    $stmt = $conn->prepare("UPDATE users SET user_text = ?, role_text = ? WHERE id = ?");
+    global $conn;
+    $stmt = $conn->prepare("UPDATE users SET user_text=?, email_text=?, pwd_text=?, role_text=?, status_text=?, time_modify = ? WHERE id = ?");
     if ($stmt) {
-        // Bind the parameters
-        $stmt->bind_param("ssi", $userData['user_text'], $userData['role_text'], $userId);
-
-        // Execute the statement
-        if ($stmt->execute()) {
-            echo "User updated successfully.";
-        } else {
+        $stmt->bind_param(
+            "ssssssi",
+            $userData['user_text'],
+            $userData['email_text'],
+            $userData['pwd_text'],
+            $userData['role_text'],
+            $userData['status_text'],
+            $userData['time_modify'],
+            $userId
+        );
+        if (!$stmt->execute()) {
             echo "Error updating user: " . $stmt->error;
         }
-
-        // Close the statement
         $stmt->close();
     } else {
-        echo "Error preparing statement: " . $conn->error; // Use $conn for error reporting
+        echo "Error preparing statement: " . $conn->error;
     }
 }
 
 function addUser($userData)
 {
-    global $conn; // Use the global mysqli connection
-
-    // Prepare the INSERT statement
-    $stmt = $conn->prepare("INSERT INTO users (user_text, pwd_text, role_text) VALUES (?, ?, ?)");
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO users (user_text, email_text, pwd_text, role_text, status_text, time_modify) VALUES (?, ?, ?, ?, ?, ?)");
     if ($stmt) {
-        // Bind the parameters
-        $stmt->bind_param("sss", $userData['user_text'], $userData['pwd_text'], $userData['role_text']);
-
-        // Execute the statement
-        if ($stmt->execute()) {
-            echo "User added successfully.";
-        } else {
+        $stmt->bind_param(
+            "ssssss",
+            $userData['user_text'],
+            $userData['email_text'],
+            $userData['pwd_text'],
+            $userData['role_text'],
+            $userData['status_text'],
+            $userData['time_modify']
+        );
+        if (!$stmt->execute()) {
             echo "Error adding user: " . $stmt->error;
         }
-
-        // Close the statement
         $stmt->close();
     } else {
-        echo "Error preparing statement: " . $conn->error; // Use $conn for error reporting
+        echo "Error preparing statement: " . $conn->error;
     }
 }
+
 
 // Fetch data from the database
 $data = [];
 try {
-    $result = $conn->query("SELECT id, user_text, role_text FROM users");
+    $result = $conn->query("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify  FROM users");
     if ($result) {
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;

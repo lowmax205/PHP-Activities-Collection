@@ -5,11 +5,6 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit();
 }
-
-// Display success message if present
-if (isset($_GET['success'])) {
-    $success_message = htmlspecialchars($_GET['success']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
