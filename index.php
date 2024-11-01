@@ -101,7 +101,7 @@ if (!isset($_SESSION['username'])) {
             <h2>Objects</h2>
             <ul>
                 <?php
-                for ($i = 82; $i <= 106; $i++) {
+                for ($i = 83; $i <= 106; $i++) {
                     echo "<a href='7_objects/activity$i.php'><li onmouseover=\"fetchContent('7_objects','activity$i.php', event)\" onmouseout=\"hideTooltip()\">Activity #$i</li></a>";
                 }
                 ?>
