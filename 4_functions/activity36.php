@@ -1,9 +1,8 @@
-<?php 
-function test() 
+<?php
+function test()
 {
-global $testvariable;
-$testvariable = "this is a test variable"; 
+    global $testvariable;
+    $testvariable = "this is a test variable";
 }
 test();
-print "test variable:$testvariable<br/>"; 
-?> 
+print "test variable:$testvariable<br/>";

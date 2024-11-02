@@ -1,9 +1,11 @@
 <?php
-class Item {
+class Item
+{
     var $name = "item"; // Property
 
     // Method to access the property
-    function getName() {
+    function getName()
+    {
         return $this->name; // Accessing property using $this
     }
 }
@@ -11,4 +13,3 @@ class Item {
 $item = new Item();
 $item->name = "widget 5442"; // Modify the property
 print $item->getName(); // Output: widget 5442
-?>

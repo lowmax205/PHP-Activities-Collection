@@ -10,4 +10,3 @@ foreach ($users as $val) {
 		print "$key: $content<br>";
 	}
 }
-?>

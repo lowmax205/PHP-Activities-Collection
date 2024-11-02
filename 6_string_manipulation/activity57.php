@@ -1,3 +1,2 @@
 <?php
-echo (strlen ("Christopher")); 
-?>
+echo (strlen("Christopher"));

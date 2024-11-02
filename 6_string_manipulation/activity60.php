@@ -1,4 +1,3 @@
 <?php
 $num = 100;
-echo (number_format ($num));
-?>
+echo (number_format($num));

@@ -13,4 +13,3 @@ $format = include("local_format.php");
 foreach ($dates as $date) {
     printf($format, $date['mon'], $date['mday'], $date['year']);
 }
-?>

@@ -9,4 +9,3 @@ while (is_string($word)) {
     }
     $word = strtok($delims);
 }
-?>

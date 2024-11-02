@@ -1,8 +1,7 @@
-<?php  
-function addNums( $firstnum, $secondnum ) 
+<?php
+function addNums($firstnum, $secondnum)
 {
- $result = $firstnum + $secondnum;  
- return $result; 
+    $result = $firstnum + $secondnum;
+    return $result;
 }
-print addNums(3,5);  
-?> 
+print addNums(3, 5);
