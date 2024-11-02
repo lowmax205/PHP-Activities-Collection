@@ -22,17 +22,17 @@ if (!isset($_SESSION['username'])) {
     <header>
         <h1>Activity List</h1>
         <?php if (isset($_SESSION['username'])): ?>
-        <p>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?>
-            <?php echo htmlspecialchars($_SESSION['role_text']); ?>
-        </p>
+            <p>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?>
+                <?php echo htmlspecialchars($_SESSION['role_text']); ?>
+            </p>
         <?php endif; ?>
         <form action="server/logout.server.php" method="POST" style="display: inline;">
             <button type="submit">Logout</button>
         </form>
         <?php if ($_SESSION['role_text'] === 'teacher'): ?>
-        <form action="userDatabaseDashboard.php" method="GET" style="display: inline;">
-            <button type="submit">Database</button>
-        </form>
+            <form action="userDatabaseDashboard.php" method="GET" style="display: inline;">
+                <button type="submit">Database</button>
+            </form>
         <?php endif; ?>
 
     </header>
@@ -111,7 +111,7 @@ if (!isset($_SESSION['username'])) {
             <h2>Files</h2>
             <ul>
                 <?php
-                for ($i = 107; $i <= 120; $i++) {
+                for ($i = 107; $i <= 131; $i++) {
                     echo "<a href='8_files/activity$i.php'><li onmouseover=\"fetchContent('8_files','activity$i.php', event)\" onmouseout=\"hideTooltip()\">Activity #$i</li></a>";
                 }
                 ?>
