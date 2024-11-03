@@ -56,9 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <h1>Database Management</h1>
         <?php if (isset($_SESSION['username'])): ?>
-            <p>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?> -
-                <?php echo htmlspecialchars($_SESSION['role_text']); ?>
-            </p>
+        <p>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?> -
+            <?php echo htmlspecialchars($_SESSION['role_text']); ?>
+        </p>
         <?php endif; ?>
         <form action="server/logout.server.php" method="POST" style="display: inline;">
             <button type="submit">Logout</button>
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (isset($_GET['status']) && !empty($_GET['status'])) {
             $statusMessage = htmlspecialchars($_GET['status']);
         ?>
-            <p><?php echo $statusMessage; ?></p>
+        <p><?php echo $statusMessage; ?></p>
         <?php } ?>
     </div>
 
@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 
-    <script src="javascript/userPopup.js"></script>
+    <script src="js/userPopup.js"></script>
 </body>
 
 </html>
