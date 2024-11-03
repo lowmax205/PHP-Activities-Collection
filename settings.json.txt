@@ -1,12 +1,9 @@
 {
   // ... php ...
   "php.suggest.basic": true,
-  "php.debug.executablePath": "D:/xampp/php/",
+  "php.debug.executablePath": "D:/xampp/php/php.exe",
   "php.validate.executablePath": "D:/xampp/php/php.exe",
   "php.executablePath": "D:/xampp/php/php.exe",
-  "[php]": {
-    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-  },
   // ... editor ...
   "editor.formatOnSave": true,
   // "editor.fontWeight": "normal",
@@ -16,8 +13,8 @@
   "css.styleSheets": ["src/**/*.css"],
   // ... Theme ...
   "workbench.iconTheme": "material-icon-theme",
-  // "workbench.colorTheme": "Default Dark Modern",
-  // "files.refactoring.autoSave": false,
+  "workbench.colorTheme": "Default Dark Modern",
+  "files.refactoring.autoSave": false,
   // ... git ...
   "git.enableSmartCommit": true,
   "git.autofetch": true,
@@ -34,5 +31,7 @@
   "liveServer.settings.root": "/",
   "liveServer.settings.host": "localhost",
   "liveServer.settings.useWebExt": true,
-  "liveServer.settings.port": 0
+  "liveServer.settings.port": 0,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "liveServer.settings.ChromeDebuggingAttachment": false
 }
