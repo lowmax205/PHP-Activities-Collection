@@ -46,12 +46,12 @@ The project is organized into the following folders:
 - **7_Objects**
 
   - Contains activities related to object.
-  - Files: `activity83.php` to `activity105.php`
+  - Files: `activity83.php` to `activity106.php`
 
 - **8_Files**
 
   - Contains activities related to Files.
-  - Files: `activity___.php` to `activity___.php`
+  - Files: `activity107.php` to `activity131.php`
 
 - **9_Database**
 
