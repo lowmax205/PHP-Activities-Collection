@@ -1,42 +1,48 @@
 <?php
 require 'config.server.php';
 
-// Function to delete a user from the users table
-function deleteUser($userId)
-{
-    $error = "";
-    global $conn; // Use the global mysqli connection
+// Function to prepare and execute a statement
+function executeStatement($stmt) {
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return "Error: " . $stmt->error;
+    }
+}
 
-    // Prepare the DELETE statement
+// Function to check if a user exists
+function userExists($userData) {
+    global $conn; // Use the global mysqli connection
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE user_text = ? OR email_text = ?");
+    $stmt->bind_param("ss", $userData['user_text'], $userData['email_text']);
+    $stmt->execute();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $stmt->close();
+    return $count > 0;
+}
+
+// Function to delete a user from the users table
+function deleteUser($userId) {
+    global $conn; // Use the global mysqli connection
     $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
     if ($stmt) {
-        // Bind the user ID parameter
         $stmt->bind_param("i", $userId);
-
-        // Execute the statement
-        if ($stmt->execute()) {
-            $error =  "User deleted successfully.";
-        } else {
-            $error =  "Error deleting user: " . $stmt->error;
-        }
-
-        // Close the statement
-        $stmt->close();
+        return executeStatement($stmt) ? "User deleted successfully." : "Error deleting user: " . $stmt->error;
     } else {
-        $error =  "Error preparing statement: " . $conn->error;
+        return "Error preparing statement: " . $conn->error;
     }
-    return $error;
 }
 
 // Function to edit user data
-function editUser($userId, $userData)
-{
-    global $conn; // Use the global mysqli connection
+function editUser($userId, $userData) {
+    if (userExists($userData)) {
+        return "Username or Email already exists."; // Return error message if user exists
+    }
 
-    // Prepare the UPDATE statement
+    global $conn; // Use the global mysqli connection
     $stmt = $conn->prepare("UPDATE users SET user_text=?, email_text=?, pwd_text=?, role_text=?, status_text=? WHERE id = ?");
     if ($stmt) {
-        // Bind the parameters
         $stmt->bind_param(
             "sssssi",
             $userData['user_text'],
@@ -46,30 +52,21 @@ function editUser($userId, $userData)
             $userData['status_text'],
             $userId
         );
-
-        // Execute the statement
-        if ($stmt->execute()) {
-            $error =  "User updated successfully.";
-        } else {
-            $error =  "Error updating user: " . $stmt->error;
-        }
-
-        // Close the statement
-        $stmt->close();
+        return executeStatement($stmt) ? "User updated successfully." : "Error updating user: " . $stmt->error;
     } else {
-        $error =  "Error preparing statement: " . $conn->error; // Use $conn for error reporting
+        return "Error preparing statement: " . $conn->error; // Use $conn for error reporting
     }
-    return $error;
 }
 
-function addUser($userData)
-{
-    global $conn; // Use the global mysqli connection
+// Function to add a user
+function addUser($userData) {
+    if (userExists($userData)) {
+        return "Username or Email already exists."; // Return error message if user exists
+    }
 
-    // Prepare the INSERT statement
+    global $conn; // Use the global mysqli connection
     $stmt = $conn->prepare("INSERT INTO users (user_text, email_text, pwd_text, role_text, status_text) VALUES (?, ?, ?, ?, ?)");
     if ($stmt) {
-        // Bind the parameters
         $stmt->bind_param(
             "sssss",
             $userData['user_text'],
@@ -78,20 +75,10 @@ function addUser($userData)
             $userData['role_text'],
             $userData['status_text']
         );
-
-        // Execute the statement
-        if ($stmt->execute()) {
-            $error =  "User added successfully.";
-        } else {
-            $error =  "Error adding user: " . $stmt->error;
-        }
-
-        // Close the statement
-        $stmt->close();
+        return executeStatement($stmt) ? "User added successfully." : "Error adding user: " . $stmt->error;
     } else {
-        $error =  "Error preparing statement: " . $conn->error; // Use $conn for error reporting
+        return "Error preparing statement: " . $conn->error; // Use $conn for error reporting
     }
-    return $error;
 }
 
 // Fetch data from the database
