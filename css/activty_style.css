@@ -37,6 +37,7 @@ header button,
   transition: background-color 0.3s ease;
 }
 .adduser {
+  margin: 10px 0;
   background-color: #007bff;
   color: white;
 }
@@ -168,6 +169,13 @@ a {
 a:hover {
   text-decoration: underline;
 }
+.line-div{
+  display: inline;
+}
+.search-form{
+  text-align: right;
+}
+
 /* Media Query for Max Width of 800px */
 @media (max-width: 800px) {
   .container,

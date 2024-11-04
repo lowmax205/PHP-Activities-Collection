@@ -34,7 +34,7 @@
 }
 
 /* Form styling within the popup */
-.popup h2 {
+.popup h2{
   margin: 0 0 15px;
   color: #333;
   font-size: 1.5rem;
@@ -45,14 +45,16 @@
   flex-direction: column;
 }
 
-.popup label {
+.popup label
+{
   margin-bottom: 5px;
   font-size: 0.9rem;
   color: #555;
 }
 
 .popup input,
-.popup select {
+.popup select,
+#searching {
   padding: 8px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
