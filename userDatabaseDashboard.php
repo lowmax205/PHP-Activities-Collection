@@ -146,6 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="transferee" id="transferee_status">Transferee</option>
                 <option value="irregular" id="irregular_status">Irregular</option>
                 <option value="employed" id="employed_status">Employed</option>
+                <option value="on_leave" id="leave_status">Employed</option>
             </select>
             <button type="submit" class="submit-btn">Update User</button>
             <button type="button" class="cancel-btn" onclick="closeNotification()">Cancel</button>
@@ -178,6 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="transferee" id="transferee_status">Transferee</option>
                 <option value="irregular" id="irregular_status">Irregular</option>
                 <option value="employed" id="employed_status">Employed</option>
+                <option value="on_leave" id="leave_status">Employed</option>
             </select>
             <button type="submit" class="submit-btn">Add User</button>
             <button type="button" class="cancel-btn" onclick="closeNotification()">Cancel</button>
