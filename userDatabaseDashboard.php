@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <h1>Database Management</h1>
+        <h1>User Data Management</h1>
         <?php if (isset($_SESSION['username'])): ?>
         <p>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?> -
             <?php echo htmlspecialchars($_SESSION['role_text']); ?>
