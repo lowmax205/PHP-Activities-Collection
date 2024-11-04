@@ -80,7 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <div class="table">
             <h2>User Details List</h2>
+            <div class="line-div">
             <button onclick="showAddUserNotification()" , class="adduser">Add User</button>
+            <form action="" method="GET" class="search-form">
+                <input type="search" name="searching" id="searching">
+                <button type="submit" class="adduser">Search</button>
+            </form>
+            </div>
             <table>
                 <thead>
                     <tr>
