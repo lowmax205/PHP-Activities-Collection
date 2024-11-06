@@ -121,7 +121,7 @@ if (!isset($_SESSION['username'])) {
             <h2>Database</h2>
             <ul>
                 <?php
-                for ($i = 0; $i <= 0; $i++) {
+                for ($i = 132; $i <= 149; $i++) {
                     echo "<a href='9_database/activity$i.php'><li onmouseover=\"fetchContent('9_database','activity$i.php', event)\" onmouseout=\"hideTooltip()\">Activity #$i</li></a>";
                 }
                 ?>
