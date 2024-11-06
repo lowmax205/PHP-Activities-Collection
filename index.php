@@ -131,7 +131,7 @@ if (!isset($_SESSION['username'])) {
             <h2>Cookies Session</h2>
             <ul>
                 <?php
-                for ($i = 0; $i <= 0; $i++) {
+                for ($i = 150; $i <= 160; $i++) {
                     echo "<a href='10_cookies_session/activity$i.php'><li onmouseover=\"fetchContent('10_cookies_session','activity$i.php', event)\" onmouseout=\"hideTooltip()\">Activity #$i</li></a>";
                 }
                 ?>
