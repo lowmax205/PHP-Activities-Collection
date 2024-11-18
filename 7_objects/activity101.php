@@ -1,4 +1,4 @@
-<?Php
+<?php
 function doThing()
 {
     // uh oh. Trouble!
