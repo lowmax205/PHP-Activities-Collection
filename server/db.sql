@@ -8,7 +8,7 @@ CREATE TABLE users (
     email_text VARCHAR(50) NOT NULL UNIQUE,
     pwd_text VARCHAR(255) NOT NULL,
     role_text ENUM('student', 'teacher') NOT NULL,
-    status_text ENUM('enrolled', 'transferee', 'employed', 'irregular') NOT NULL,
+    status_text ENUM('enrolled', 'transferee', 'employed','on_leave', 'irregular') NOT NULL,
     time_modify TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
 );
 
@@ -61,5 +61,3 @@ VALUES ('admin', 'admin@example.com', 'adminpass', 'teacher', 'employed'),
     ('student28', 'student28@example.com', 'studentpass', 'student', 'transferee'),
     ('teacher14', 'teacher14@example.com', 'teacherpass', 'teacher', 'employed'),
     ('student29', 'student29@example.com', 'studentpass', 'student', 'enrolled')
-
-GRANT ALL PRIVILEGES ON phpactivity.* TO 'adminphp'@'localhost' IDENTIFIED BY 'admin123';

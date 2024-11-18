@@ -40,6 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
+
+// Handle search request
+$searchQuery = '';
+if (isset($_GET['searching']) && !empty($_GET['searching'])) {
+    $searchQuery = $_GET['searching'];
+    $data = searchUsers($searchQuery);
+} else {
+    $data = fetchAllUsers();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,8 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="line-div">
             <button onclick="showAddUserNotification()" , class="adduser">Add User</button>
             <form action="" method="GET" class="search-form">
-                <input type="search" name="searching" id="searching">
+                <input type="search" name="searching" id="searching" value="<?php echo htmlspecialchars($searchQuery); ?>">
                 <button type="submit" class="adduser">Search</button>
+                <input type="reset" value="Reset" class="adduser" onclick="resetTable()">
             </form>
             </div>
             <table>
@@ -187,6 +197,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <script src="js/userPopup.js"></script>
+    <script>
+        function resetTable() {
+            window.location.href = 'userDatabaseDashboard.php';
+        }
+    </script>
 </body>
 
 </html>
