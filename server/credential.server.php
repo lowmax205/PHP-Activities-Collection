@@ -112,6 +112,12 @@ function searchUsers($searchQuery) {
     return $data;
 }
 
+// Function to reset the table to its default view
+function resetTable() {
+    header('Location: ../userDatabaseDashboard.php');
+    exit();
+}
+
 // Fetch data from the database
 $data = [];
 try {

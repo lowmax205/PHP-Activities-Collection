@@ -94,6 +94,7 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
             <form action="" method="GET" class="search-form">
                 <input type="search" name="searching" id="searching" value="<?php echo htmlspecialchars($searchQuery); ?>">
                 <button type="submit" class="adduser">Search</button>
+                <input type="reset" value="Reset" class="adduser" onclick="resetTable()">
             </form>
             </div>
             <table>
@@ -196,6 +197,11 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
     </div>
 
     <script src="js/userPopup.js"></script>
+    <script>
+        function resetTable() {
+            window.location.href = 'userDatabaseDashboard.php';
+        }
+    </script>
 </body>
 
 </html>
