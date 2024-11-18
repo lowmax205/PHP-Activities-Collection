@@ -1,14 +1,13 @@
-<?php
-class MyClass
+<?Php
+function doThing()
 {
-    const PI = 3.14; // Define a constant
-
-    // Static method to access constant
-    public static function getPi()
-    {
-        return self::PI;
-    }
+    // uh oh. Trouble!
+    throw new Exception("A generic error", 666);
+    print "this will never be executed";
 }
-
-// Access constant directly using class name
-print MyClass::PI; // Output: 3.14
+try {
+    $test = new ThingDoer();
+    $test->doThing();
+} catch (Exception $e) {
+    print $e->getMessage();
+}

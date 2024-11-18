@@ -1,12 +1,17 @@
 <?php
 class Item
 {
-    var $name = "item"; // Property declaration
+   public $name = "item";
+   public $price = 0;
+   function __call($method, $args)
+   {
+      $bloggsfuncs = array("bloggsRegister", "bloggsRemove");
+      if (in_array($method, $bloggsfuncs)) {
+         array_unshift($args, get_object_vars($this));
+         return call_user_func($method, $args);
+      }
+   }
 }
-
-$obj1 = new Item();
-$obj2 = new Item();
-
-$obj1->name = "widget 5442";
-print "$obj1->name<br />"; // Output: widget 5442
-print "$obj2->name<br />"; // Output: item
+$item = new Item();
+print $item->bloggsRegister(true);
+print $item->bloggsRemove(true);

@@ -1,14 +1,20 @@
 <?php
-class Item
+class CustomException extends Exception
 {
-    public static $SALES_TAX = 10; // Static property
-
-    // Static method to calculate tax
-    public static function calcTax($amount)
+    public function __construct($message, $errorcode)
     {
-        return $amount + ($amount / (Item::$SALES_TAX / 100));
+        parent::__construct($message, $errorcode);
+    }
+
+    public function getCustomMessage()
+    {
+        return "Error [{$this->code}]: {$this->message}";
     }
 }
 
-$amount = 10;
-print "Given a cost of $amount, the total will be " . Item::calcTax($amount); // Output: 11
+try {
+    // Example usage
+    throw new CustomException("An error occurred", 101);
+} catch (CustomException $e) {
+    echo $e->getCustomMessage();
+}

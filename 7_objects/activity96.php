@@ -1,14 +1,22 @@
 <?php
-class Item
+class TimeThing
 {
-    var $name = "item"; // Property
-
-    // Method to return the name of the item
-    function getName()
+    function __get($arg)
     {
-        return "item";
+        if ($arg == "time") {
+            return getdate();
+        }
+    }
+    function __set($arg, $val)
+    {
+        if ($arg == "time") {
+            trigger_error("cannot set property $arg");
+            return false;
+        }
     }
 }
-
-$item = new Item();
-print $item->getName(); // Output: item
+$cal = new TimeThing();
+print $cal->time['mday'] . "/";
+print $cal->time['mon'] . "/";
+print $cal->time['year'];
+$cal->time = 555; // illegal call

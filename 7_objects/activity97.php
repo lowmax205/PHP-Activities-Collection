@@ -1,15 +1,16 @@
 <?php
 class Item
 {
-    var $name = "item"; // Property
-
-    // Method to access the property
-    function getName()
+    private $id = 555;
+    final function getID()
     {
-        return $this->name; // Accessing property using $this
+        return $this->id;
     }
 }
-
-$item = new Item();
-$item->name = "widget 5442"; // Modify the property
-print $item->getName(); // Output: widget 5442
+class PriceItem extends Item
+{
+    function getID()
+    {
+        return 0;
+    }
+}
