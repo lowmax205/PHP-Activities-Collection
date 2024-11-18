@@ -40,6 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
+
+// Handle search request
+$searchQuery = '';
+if (isset($_GET['searching']) && !empty($_GET['searching'])) {
+    $searchQuery = $_GET['searching'];
+    $data = searchUsers($searchQuery);
+} else {
+    $data = fetchAllUsers();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="line-div">
             <button onclick="showAddUserNotification()" , class="adduser">Add User</button>
             <form action="" method="GET" class="search-form">
-                <input type="search" name="searching" id="searching">
+                <input type="search" name="searching" id="searching" value="<?php echo htmlspecialchars($searchQuery); ?>">
                 <button type="submit" class="adduser">Search</button>
             </form>
             </div>

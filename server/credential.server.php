@@ -81,6 +81,37 @@ function addUser($userData) {
     }
 }
 
+// Function to fetch all users
+function fetchAllUsers() {
+    global $conn;
+    $data = [];
+    $result = $conn->query("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify FROM users");
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        $result->free();
+    }
+    return $data;
+}
+
+// Function to search users by username or email
+function searchUsers($searchQuery) {
+    global $conn;
+    $data = [];
+    $stmt = $conn->prepare("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify FROM users WHERE user_text LIKE ? OR email_text LIKE ?");
+    $searchTerm = '%' . $searchQuery . '%';
+    $stmt->bind_param("ss", $searchTerm, $searchTerm);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        $stmt->close();
+    }
+    return $data;
+}
+
 // Fetch data from the database
 $data = [];
 try {
