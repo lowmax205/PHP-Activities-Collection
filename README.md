@@ -2,7 +2,7 @@
 
 ## 📊 Overview
 
-Welcome to **School Project**, a collection of various PHP activities covering topics like Arrays, Functions, etc. Each activity is well-organized into categories for easy navigation and practice.
+Welcome to **PHP Activities Collection**, a collection of various PHP activities covering topics like Arrays, Functions, etc. Each activity is well-organized into categories for easy navigation and practice.
 
 ![PHP Version](https://img.shields.io/badge/PHP-%3E%3D7.4-777BB4?style=for-the-badge&logo=php)
 ![Status](https://img.shields.io/badge/Status-Ongoing-orange?style=for-the-badge)
