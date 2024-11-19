@@ -1,24 +1,16 @@
 <?php
 class Item
 {
-    var $name;
-
-    // Constructor to initialize the name
-    function Item($name = "item")
+    public $name = "item";
+    private $updater;
+    public function setUpdater(ItemUpdater $update)
     {
-        $this->name = $name;
+        $this->updater = $update;
     }
-
-    function setName($n)
+    function __destruct()
     {
-        $this->name = $n;
-    }
-
-    function getName()
-    {
-        return $this->name;
+        if (! empty($this->updater)) {
+            $this->updater->update($this);
+        }
     }
 }
-
-$item = new Item("widget 5442");
-print $item->getName(); // Output: widget 5442

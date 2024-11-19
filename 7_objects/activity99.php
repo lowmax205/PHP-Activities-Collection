@@ -1,19 +1,27 @@
 <?php
-class Product
+class ItemUpdater
 {
-    public $name;      // Public property
-    private $code;     // Private property
-    protected $type;   // Protected property
-
-    function __construct($name, $code, $type)
+    public function update(Item $item)
     {
-        $this->name = $name;
-        $this->code = $code;
-        $this->type = $type;
-    }
-
-    public function getProductInfo()
-    {
-        return "Name: $this->name, Type: $this->type";
+        print "updating.. ";
+        print $item->name;
     }
 }
+class Item
+{
+    public $name = "item";
+    private $updater;
+    public function setUpdater(ItemUpdater $update)
+    {
+        $this->updater = $update;
+    }
+    function __destruct()
+    {
+        if (! empty($this->updater)) {
+            $this->updater->update($this);
+        }
+    }
+}
+$item = new Item();
+$item->setUpdater(new ItemUpdater());
+unset($item);

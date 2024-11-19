@@ -1,13 +1,23 @@
 <?php
-class Item
+class FileException extends Exception
 {
-    public static $SALES_TAX = 9; // Static property
-
-    // Static method to access static property
-    public static function getSalesTax()
+    public function getFileException()
     {
-        return self::$SALES_TAX;
+        return "Exception thrown in " . $this->getFile() . " on line " . $this->getLine();
     }
 }
 
-print "The tax to be levied on all items is " . Item::$SALES_TAX . "%"; // Output: 9%
+function getFileContent($filename)
+{
+    if (!file_exists($filename)) {
+        throw new FileException("File not found");
+    }
+    return file_get_contents($filename);
+}
+
+try {
+    $content = getFileContent("example.txt");
+    echo $content;
+} catch (FileException $e) {
+    echo $e->getFileException();
+}

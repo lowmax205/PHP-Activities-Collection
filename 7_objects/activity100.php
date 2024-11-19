@@ -1,23 +1,9 @@
 <?php
-class Item
+function doThing()
 {
-    var $name;
-
-    // Constructor to initialize name and code
-    function Item($name = "item", $code = 0)
-    {
-        $this->name = $name;
-        $this->code = $code;
-    }
-
-    function getName()
-    {
-        return $this->name;
-    }
+    // uh oh. Trouble!
+    throw new Exception("A generic error", 666);
+    print "this will never be executed";
 }
-
-// PriceItem extends Item, inheriting its properties and methods
-class PriceItem extends Item {}
-
-$item = new PriceItem("widget", 5442);
-print $item->getName(); // Output: widget
+$test = new ThingDoer();
+$test->doThing();

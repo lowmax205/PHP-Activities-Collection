@@ -1,5 +1,5 @@
 <?php
-class Shop
+abstract class AbstractShop
 {
     private static $instance;
     public $name = "shop";
@@ -8,10 +8,15 @@ class Shop
     public static function getInstance()
     {
         if (empty(self::$instance)) {
-            self::$instance = new Shop();
+            self::$instance = new static();
         }
         return self::$instance;
     }
+}
+
+class Shop extends AbstractShop
+{
+    // Additional functionality for Shop can be added here
 }
 
 $first = Shop::getInstance();

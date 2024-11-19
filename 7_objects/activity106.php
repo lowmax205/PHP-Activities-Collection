@@ -1,11 +1,21 @@
 <?php
+class PassObj
+{
+    function PassObj($item)
+    {
+        $item->name = "harry";
+    }
+}
 class Item
 {
-    // Minimal class definition
+    var $name = "bob";
 }
-
-$obj1 = new Item();
-$obj2 = new Item();
-
-print "\$obj1 is an " . gettype($obj1) . "<br />";
-print "\$obj2 is an " . gettype($obj2) . "<br />";
+$item = new Item();
+$pass = new PassObj($item);
+print $item->name;
+///////////////////////////////////////////////////
+function &addItem(&$item)
+{
+    $this->items[] = &$item;
+    return $item;
+}
