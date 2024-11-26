@@ -2,7 +2,8 @@
 require 'config.server.php';
 
 // Function to prepare and execute a statement
-function executeStatement($stmt) {
+function executeStatement($stmt)
+{
     if ($stmt->execute()) {
         return true;
     } else {
@@ -11,7 +12,8 @@ function executeStatement($stmt) {
 }
 
 // Function to check if a user exists
-function userExists($userData) {
+function userExists($userData)
+{
     global $conn; // Use the global mysqli connection
     $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE user_text = ? OR email_text = ?");
     $stmt->bind_param("ss", $userData['user_text'], $userData['email_text']);
@@ -23,7 +25,8 @@ function userExists($userData) {
 }
 
 // Function to delete a user from the users table
-function deleteUser($userId) {
+function deleteUser($userId)
+{
     global $conn; // Use the global mysqli connection
     $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
     if ($stmt) {
@@ -35,7 +38,8 @@ function deleteUser($userId) {
 }
 
 // Function to edit user data
-function editUser($userId, $userData) {
+function editUser($userId, $userData)
+{
     if (userExists($userData)) {
         return "Username or Email already exists."; // Return error message if user exists
     }
@@ -59,7 +63,8 @@ function editUser($userId, $userData) {
 }
 
 // Function to add a user
-function addUser($userData) {
+function addUser($userData)
+{
     if (userExists($userData)) {
         return "Username or Email already exists."; // Return error message if user exists
     }
@@ -82,7 +87,8 @@ function addUser($userData) {
 }
 
 // Function to fetch all users
-function fetchAllUsers() {
+function fetchAllUsers()
+{
     global $conn;
     $data = [];
     $result = $conn->query("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify FROM users");
@@ -96,7 +102,8 @@ function fetchAllUsers() {
 }
 
 // Function to search users by username or email
-function searchUsers($searchQuery) {
+function searchUsers($searchQuery)
+{
     global $conn;
     $data = [];
     $stmt = $conn->prepare("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify FROM users WHERE user_text LIKE ? OR email_text LIKE ?");
@@ -112,10 +119,49 @@ function searchUsers($searchQuery) {
     return $data;
 }
 
+// Function to fetch a user by ID
+function fetchUserById($userId)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT id, user_text, email_text, pwd_text, role_text, status_text, time_modify FROM users WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    } else {
+        return null;
+    }
+}
+
 // Function to reset the table to its default view
-function resetTable() {
+function resetTable()
+{
     header('Location: ../userDatabaseDashboard.php');
     exit();
+}
+
+// Function to create a view of all user information
+function createView($data)
+{
+    if (empty($data)) {
+        return "<p>No data available.</p>";
+    }
+
+    $html = "<div class='portfolio'>";
+    foreach ($data as $row) {
+        $html .= "<div class='portfolio-item'>
+                    <h2>User Details</h2>
+                    <p><strong>ID:</strong> {$row['id']}</p>
+                    <p><strong>Username:</strong> {$row['user_text']}</p>
+                    <p><strong>Email:</strong> {$row['email_text']}</p>
+                    <p><strong>Password:</strong> {$row['pwd_text']}</p>
+                    <p><strong>Role:</strong> {$row['role_text']}</p>
+                    <p><strong>Status:</strong> {$row['status_text']}</p>
+                    <p><strong>Time Modified:</strong> {$row['time_modify']}</p>
+                  </div>";
+    }
+    $html .= "</div>";
+    return $html;
 }
 
 // Fetch data from the database

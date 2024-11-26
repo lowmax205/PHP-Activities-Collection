@@ -16,6 +16,26 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
     exit();
 }
 
+// Handle view request
+if (isset($_GET['action']) && $_GET['action'] === 'view' && isset($_GET['id'])) {
+    $userId = intval($_GET['id']);
+    $userData = fetchUserById($userId);
+    if ($userData) {
+        $viewHtml = createView([$userData]);
+        echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    showViewPopup(`$viewHtml`);
+                });
+              </script>";
+    } else {
+        echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    showViewPopup('User not found.');
+                });
+              </script>";
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $userData = [
@@ -59,15 +79,16 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
     <title>Database Management</title>
     <link rel="stylesheet" href="css/activty_style.css">
     <link rel="stylesheet" href="css/popup_style.css">
+    <link rel="stylesheet" href="css/createview_style.css">
 </head>
 
 <body>
     <header>
         <h1>User Data Management</h1>
         <?php if (isset($_SESSION['username'])): ?>
-        <p>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?> -
-            <?php echo htmlspecialchars($_SESSION['role_text']); ?>
-        </p>
+            <p>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?> -
+                <?php echo htmlspecialchars($_SESSION['role_text']); ?>
+            </p>
         <?php endif; ?>
         <form action="server/logout.server.php" method="POST" style="display: inline;">
             <button type="submit">Logout</button>
@@ -81,7 +102,7 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
         <?php if (isset($_GET['status']) && !empty($_GET['status'])) {
             $statusMessage = htmlspecialchars($_GET['status']);
         ?>
-        <p><?php echo $statusMessage; ?></p>
+            <p><?php echo $statusMessage; ?></p>
         <?php } ?>
     </div>
 
@@ -90,12 +111,12 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
         <div class="table">
             <h2>User Details List</h2>
             <div class="line-div">
-            <button onclick="showAddUserNotification()" , class="adduser">Add User</button>
-            <form action="" method="GET" class="search-form">
-                <input type="search" name="searching" id="searching" value="<?php echo htmlspecialchars($searchQuery); ?>">
-                <button type="submit" class="adduser">Search</button>
-                <input type="reset" value="Reset" class="adduser" onclick="resetTable()">
-            </form>
+                <button onclick="showAddUserNotification()" , class="adduser">Add User</button>
+                <form action="" method="GET" class="search-form">
+                    <input type="search" name="searching" id="searching" value="<?php echo htmlspecialchars($searchQuery); ?>">
+                    <button type="submit" class="adduser">Search</button>
+                    <input type="reset" value="Reset" class="adduser" onclick="resetTable()">
+                </form>
             </div>
             <table>
                 <thead>
@@ -120,7 +141,8 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
                                 <td>{$row['status_text']}</td>
                                 <td>
                                     <a href='#' onclick='editUser({$row['id']}, \"{$row['user_text']}\", \"{$row['email_text']}\", \"{$row['pwd_text']}\", \"{$row['role_text']}\", \"{$row['status_text']}\")'>Edit</a> | 
-                                    <a href='userDatabaseDashboard.php?action=delete&id={$row['id']}' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a>
+                                    <a href='userDatabaseDashboard.php?action=delete&id={$row['id']}' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a> |
+                                    <a href='userDatabaseDashboard.php?action=view&id={$row['id']}'>View</a>
                                 </td>
                                 <td>{$row['time_modify']}</td>
                               </tr>";
@@ -130,7 +152,8 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
             </table>
         </div>
     </div>
-    <div id="overlay"></div>
+    <div id="overlay" class="overlay" style="display: none;"></div>
+    <div id="viewUserPopup" class="popup" style="display: none;"></div>
     <!-- Edit User Notification -->
     <div id="editUserNotification" class="popup">
         <h2>Edit User</h2>
@@ -200,6 +223,19 @@ if (isset($_GET['searching']) && !empty($_GET['searching'])) {
     <script>
         function resetTable() {
             window.location.href = 'userDatabaseDashboard.php';
+        }
+
+        function closeViewPopup() {
+            document.getElementById('viewUserPopup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        }
+
+        function showViewPopup(content) {
+            document.getElementById('viewUserPopup').innerHTML = content + '<button onclick="closeViewPopup()">Close</button>';
+            document.getElementById('viewUserPopup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            document.body.classList.add('no-scroll');
         }
     </script>
 </body>
